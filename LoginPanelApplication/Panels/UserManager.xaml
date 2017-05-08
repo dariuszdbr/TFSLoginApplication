@@ -1,0 +1,157 @@
+﻿<Page x:Class="LoginPanelApplication.Panels.UserManager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1200" Background="GhostWhite" x:Name="UserMgr"
+      Title="UserManager">
+
+    <Page.Resources>
+        <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
+    </Page.Resources>
+    <StackPanel>
+        <GroupBox Margin="10"  FontSize="12.5">
+            <GroupBox.Header>
+                <Bold>Add new user with permission</Bold>
+            </GroupBox.Header>
+            <StackPanel>
+                <StackPanel Margin="0,5,0,0">
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Width="100" FontWeight="Bold">First Name:</Label>
+                        <TextBox x:Name="txtName" Width="382" ToolTip="Please enter the employee's first and last name"/>
+                        <Label Width="100" FontWeight="Bold">Last Name:</Label>
+                        <TextBox x:Name="txtLastName" Width="380"/>
+                    </StackPanel>
+                    <GroupBox FontSize="9" Header="Optional">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="95" FontSize="12" FontWeight="Bold">Password:</Label>
+                            <TextBox x:Name="txtPassword" Width="{Binding ElementName=UserMgr , Path=ActualWidth}" FontSize="12" />
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <GroupBox Header="Select permission" >
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="permissionAdmin" Margin="0,0,50,0">Admin</RadioButton>
+                        <RadioButton x:Name="permissionEmployee" Margin="50,0,0,0">Employee</RadioButton>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel>
+                    <Button x:Name="btnAddUser" Click="btnAddUser_Click">Add User</Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid Margin="10"  
+                  x:Name="DataGridManager" 
+                  AlternatingRowBackground="AliceBlue"
+                  AutoGenerateColumns="False"
+                  CanUserResizeRows="False"  
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  
+                  >
+         
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="100" Header="User ID" Binding="{Binding Path=UserID}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn  Width="100" Header="Name" Binding="{Binding Path=Name}">
+                <DataGridTextColumn.HeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="100" Header="Last Name" Binding="{Binding Path=LastName}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="100" Header="Login" Binding="{Binding Path=Login}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="100" Header="Password" Binding="{Binding Path=Password}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="100" Header="Status" Binding="{Binding Path=Status, Converter={StaticResource BoolToUserStatusConverter}}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="150" Header="Last login date" Binding="{Binding Path=LoginDate}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="150" Header="Last logout date" Binding="{Binding Path=LogoutDate}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="100" Header="Worked hours" Binding="{Binding Path=WorkingTime}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Width="150" Header="Date of employment" Binding="{Binding Path=DateOfEmployment}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Beige" />
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="FontSize" Value="15" />
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+        </DataGrid>
+        <Button Margin="10" x:Name="btnDeleteUser" Click="btnDeleteUser_Click">Delete Selected User</Button>
+        <Button Margin="10" x:Name="btnBack" Click="btnBack_Click">Back to Admin panel</Button>
+    </StackPanel>
+</Page>

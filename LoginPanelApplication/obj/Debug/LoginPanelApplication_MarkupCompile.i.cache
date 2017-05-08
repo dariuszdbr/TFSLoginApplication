@@ -1,0 +1,20 @@
+﻿LoginPanelApplication
+
+
+winexe
+C#
+.cs
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\obj\Debug\
+LoginPanelApplication
+none
+false
+DEBUG;TRACE
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\App.xaml
+61459007725
+2-1967108156
+161520968575
+14598183689
+MainWindow.xaml;Panels\AdminPanel.xaml;Panels\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\RestorePassword.xaml;Panels\UserManager.xaml;
+
+False
+

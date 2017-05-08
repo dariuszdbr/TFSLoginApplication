@@ -1,0 +1,107 @@
+﻿<Page x:Class="LoginPanelApplication.Panels.AdminPanel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginPanelApplication.Panels"
+      mc:Ignorable="d" 
+       d:DesignHeight="1000" d:DesignWidth="1200" Background="GhostWhite" x:Name="Adminpanel"
+      Title="AdminPanel">
+
+
+    <Grid>
+        <Grid Margin="100">
+                <!-- This rectangle is animated. -->
+                <Rectangle Name="myRectangle" Margin="0,50,0,0" 
+                       Width="100" Height="10" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#FFC98000" Opacity="0.4"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard Name="MyBeginStoryboard">
+                            <Storyboard >
+                                <DoubleAnimation 
+                Storyboard.TargetName="myRectangle" 
+                Storyboard.TargetProperty="Width" 
+                Duration="0:0:3.5" From="0" To="600" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+            </Grid>
+        <Grid Margin="100">
+            <!-- This rectangle is animated. -->
+            <Rectangle Name="myRectangle2" Margin="0,0,0,50" 
+                       Width="100" Height="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FFC98000" Opacity="0.4"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Name="MyBeginStoryboard2">
+                        <Storyboard >
+                            <DoubleAnimation 
+                Storyboard.TargetName="myRectangle2" 
+                Storyboard.TargetProperty="Width" 
+                Duration="0:0:3.5" From="0" To="600" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+        <Grid Margin="100">
+            <!-- This rectangle is animated. -->
+            <Rectangle Name="myRectangle3" Margin="10,30,0,30" 
+                       Width="10" Height="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FFC98000" Opacity="0.4"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Name="MyBeginStoryboard3">
+                        <Storyboard >
+                            <DoubleAnimation 
+                Storyboard.TargetName="myRectangle3" 
+                Storyboard.TargetProperty="Height" 
+                Duration="0:0:3.5" From="0" To="500" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+        <Grid Margin="100">
+            <!-- This rectangle is animated. -->
+            <Rectangle Name="myRectangle4" Margin="0,30,10,30" 
+                       Width="10" Height="100" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FFC98000" Opacity="0.4"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Name="MyBeginStoryboard4">
+                        <Storyboard >
+                            <DoubleAnimation 
+                Storyboard.TargetName="myRectangle4" 
+                Storyboard.TargetProperty="Height" 
+                Duration="0:0:3.5" From="0" To="500" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+        </Grid>
+        
+        <Grid VerticalAlignment="Center" Margin="30">
+            <StackPanel Margin="200">
+                <Button x:Name="btnUserManager" Click="btnUserManager_Click"  Margin="20">User Manager</Button>
+                <Button x:Name="btnLogout" Padding="3" Click="btnLogout_Click"  Margin="20">Logout</Button>
+            </StackPanel>
+        </Grid>
+        <Label x:Name="lblCurrentUser" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="{Binding }"/>
+    </Grid>
+
+</Page>
