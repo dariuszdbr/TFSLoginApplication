@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\obj\Debug\
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\
 LoginPanelApplication
 none
 false
 DEBUG;TRACE
-C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\App.xaml
-5-1303892194
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginPanelApplication\App.xaml
+62146691708
 2-1967108156
-11-4440301
+13176310761
 14598183689
-MainWindow.xaml;Panels\AdminPanel.xaml;Panels\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\UserManager.xaml;
+MainWindow.xaml;Panels\AdminPanel.xaml;Panels\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\PasswordRecoveryPanel.xaml;Panels\UserManager.xaml;
 
 False
 

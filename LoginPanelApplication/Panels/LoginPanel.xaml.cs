@@ -22,9 +22,7 @@ namespace LoginPanelApplication.Panels
     /// Interaction logic for LoginPanel.xaml
     /// </summary>
     public partial class LoginPanel : Page
-    {
-
-        string connectionString;
+    { 
         int userId;
 
         public LoginPanel()
@@ -34,11 +32,9 @@ namespace LoginPanelApplication.Panels
 
         private void Login()
         {
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\users\darek\documents\visual studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\SqlUserDatabase.mdf;Integrated Security=True;MultipleActiveResultSets=True";
-
-            string select = "Select * From Users WHERE Login = @Login and Password = @Password";
+            string select = "Select * From Users WHERE Login = @Login and Password = @Password collate SQL_Latin1_General_Cp1_CS_AS";
             string update = "Update Users SET LoginDate = @LoginDate WHERE UserID = @ID";
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
             SqlCommand selectCommand = new SqlCommand(select, connection);
             SqlParameter login = new SqlParameter("@Login", txtLogin.Text);
             SqlParameter password = new SqlParameter("@Password", txtPassword.Password);
@@ -56,7 +52,7 @@ namespace LoginPanelApplication.Panels
             {
                 SqlCommand updateCommand = new SqlCommand(update, connection);  //Create command to update LoginDate
                 userId = Convert.ToInt32(dataTable.Rows[0]["UserID"]);          //Find current userId
-                SqlParameter userID = new SqlParameter("@ID", userId);              //Create parameter with actual Id
+                SqlParameter userID = new SqlParameter("@ID", userId);          //Create parameter with actual Id
                 updateCommand.Parameters.Add(userID);                           //Add parameter to the command
 
                 var panelAdmin = Convert.ToBoolean(dataTable.Rows[0]["Status"]);
@@ -64,13 +60,13 @@ namespace LoginPanelApplication.Panels
                 {
                     updateCommand.Parameters.AddWithValue("@LoginDate", DateTime.Now); // Update Login Date
                     updateCommand.ExecuteNonQuery();                                   // Execute command
-                    PageSwitcher.Navigate(new AdminPanel(userId));                           // Switch to AdminPanel
+                    PageSwitcher.Navigate(new AdminPanel(userId));                     // Switch to AdminPanel
                 }
                 else
                 {
                     updateCommand.Parameters.AddWithValue("@LoginDate", DateTime.Now); // Update Login Date
                     updateCommand.ExecuteNonQuery();                                   // Execute command
-                    PageSwitcher.Navigate(new EmployeePanel(userId));                        // Switch to EmployeePanel
+                    PageSwitcher.Navigate(new EmployeePanel(userId));                  // Switch to EmployeePanel
                 }
             }
             else
@@ -88,11 +84,6 @@ namespace LoginPanelApplication.Panels
         }
 
 
-        private void Label_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             Login();   
@@ -107,6 +98,11 @@ namespace LoginPanelApplication.Panels
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             PageSwitcher.Window.Close();
+        }
+
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PageSwitcher.Navigate(new PasswordRecveryPanel());
         }
     }
 }

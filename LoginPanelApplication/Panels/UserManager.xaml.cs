@@ -22,11 +22,9 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class UserManager : Page
     {
-        static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\users\darek\documents\visual studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\SqlUserDatabase.mdf;Integrated Security=True;MultipleActiveResultSets=True";
-        SqlConnection connection = new SqlConnection(connectionString); 
+        SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
         SqlDataAdapter adapter = new SqlDataAdapter();
         DataTable dt;
-        DataSet ds;
 
         int AdminID;
 
@@ -67,8 +65,7 @@ namespace LoginPanelApplication.Panels
                 var password = (txtPassword.Text.Length > 0) ? txtPassword.Text : txtName.Text + "123";
                 var login = txtName.Text[0].ToString().ToLower() + txtLastName.Text.ToLower();
 
-                string insert = "INSERT INTO Users VALUES(@Name, @LastName, @Login, @Password, @Status, @LoginDate, @LogoutDate, @WorkingTime, @DateOfEmployment)";
-                connection = new SqlConnection(connectionString);
+                string insert = "INSERT INTO Users VALUES(@Name, @LastName, @Login, @Password, @Status, @LoginDate, @LogoutDate, @WorkingTime, @DateOfEmployment)"; 
                 adapter = new SqlDataAdapter();
                 adapter.InsertCommand = new SqlCommand(insert, connection);
                 adapter.InsertCommand.Parameters.Add("@Name", SqlDbType.NVarChar).Value = txtName.Text;

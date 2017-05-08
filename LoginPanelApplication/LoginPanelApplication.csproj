@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConnectionString.cs" />
     <Compile Include="Converters\BoolToUserStatusConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -95,7 +96,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panels\RestorePassword.xaml">
+    <Page Include="Panels\PasswordRecoveryPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,8 +116,8 @@
     <Compile Include="Panels\LoginPanel.xaml.cs">
       <DependentUpon>LoginPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Panels\RestorePassword.xaml.cs">
-      <DependentUpon>RestorePassword.xaml</DependentUpon>
+    <Compile Include="Panels\PasswordRecoveryPanel.xaml.cs">
+      <DependentUpon>PasswordRecoveryPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panels\UserManager.xaml.cs">
       <DependentUpon>UserManager.xaml</DependentUpon>

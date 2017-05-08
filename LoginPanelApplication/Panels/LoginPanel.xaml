@@ -76,18 +76,25 @@
             <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="txtLogin" Margin="5"/>
             <Label Grid.Row="1" Content="Password:"  FontWeight="Bold" HorizontalAlignment="left" VerticalAlignment="Top"/>
             <PasswordBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  x:Name="txtPassword" Margin="5"/>
-            <Label Tag="Forget Password?" 
-                   Grid.Row="1" Grid.Column="1"  
+            <Label Grid.Row="1" Grid.Column="1"  
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Right" 
                    Margin="0,25,5,0" 
                    HorizontalContentAlignment="Center" 
-                   FontStyle="Italic" Foreground="Blue"  
-                   Hyperlink.Click="Label_Click"  >
-             <TextBlock TextDecorations="Underline"  
-                        Text="{Binding Path=Tag,   
-                        RelativeSource={RelativeSource Mode=FindAncestor, 
-                        AncestorType={x:Type Label}}}" />
+                   FontStyle="Italic" 
+                   MouseDoubleClick="Label_MouseDoubleClick"
+                   Content="Forget Password?">
+                <Label.Style>
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground" Value="Blue" />
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Red" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
             </Label>
             <Button x:Name="btnLogin" Grid.Column="1" Grid.Row="1" Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60" Width="100" Click="btnLogin_Click"/>
             <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="60" Width="100" Click="btnExit_Click" />

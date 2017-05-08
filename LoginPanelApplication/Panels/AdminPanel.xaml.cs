@@ -31,10 +31,8 @@ namespace LoginPanelApplication.Panels
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\users\darek\documents\visual studio 2017\Projects\LoginPanelApplication\LoginPanelApplication\SqlUserDatabase.mdf;Integrated Security=True;MultipleActiveResultSets=True";
-
             string update = "UPDATE Users SET LogoutDate = @LogoutDate WHERE UserID = @Id";
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
 
             SqlCommand updateCommand = new SqlCommand(update, connection);
             SqlParameter paramUserId = new SqlParameter("@Id", AdminID);
