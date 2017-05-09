@@ -23,7 +23,7 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class LoginPanel : Page
     { 
-        int userId;
+        int userId = 0;
 
         public LoginPanel()
         {
@@ -92,7 +92,9 @@ namespace LoginPanelApplication.Panels
         private void Grid_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
+            {
                 Login();
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -104,6 +106,11 @@ namespace LoginPanelApplication.Panels
         {
             PageSwitcher.Navigate(new PasswordRecveryPanel());
         }
+
+        public TextBox TestTxtLogin { get { return txtLogin; } }
+        public PasswordBox TestTxtPassword { get { return txtPassword; } }
+        public int TestUserID { get { return userId; } }
+        public void GetSqlLogin() { Login(); }
     }
 }
 

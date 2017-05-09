@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LoginPanelApplication.Panels"
       mc:Ignorable="d" 
-       d:DesignHeight="1000" d:DesignWidth="1200" Background="GhostWhite" x:Name="Adminpanel"
+       d:DesignHeight="500" d:DesignWidth="900" Background="GhostWhite" x:Name="Adminpanel"
       Title="AdminPanel">
 
 
     <Grid>
-        <Grid Margin="100">
+        <Grid Margin="50">
                 <!-- This rectangle is animated. -->
                 <Rectangle Name="myRectangle" Margin="0,50,0,0" 
                        Width="100" Height="10" HorizontalAlignment="Right" VerticalAlignment="Top" >
@@ -31,7 +31,7 @@
                     </EventTrigger>
                 </Grid.Triggers>
             </Grid>
-        <Grid Margin="100">
+        <Grid Margin="50">
             <!-- This rectangle is animated. -->
             <Rectangle Name="myRectangle2" Margin="0,0,0,50" 
                        Width="100" Height="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
@@ -52,7 +52,7 @@
                 </EventTrigger>
             </Grid.Triggers>
         </Grid>
-        <Grid Margin="100">
+        <Grid Margin="50">
             <!-- This rectangle is animated. -->
             <Rectangle Name="myRectangle3" Margin="10,30,0,30" 
                        Width="10" Height="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
@@ -73,7 +73,7 @@
                 </EventTrigger>
             </Grid.Triggers>
         </Grid>
-        <Grid Margin="100">
+        <Grid Margin="50">
             <!-- This rectangle is animated. -->
             <Rectangle Name="myRectangle4" Margin="0,30,10,30" 
                        Width="10" Height="100" HorizontalAlignment="Right" VerticalAlignment="Top" >
@@ -96,7 +96,7 @@
         </Grid>
         
         <Grid VerticalAlignment="Center" Margin="30">
-            <StackPanel Margin="200">
+            <StackPanel Margin="50">
                 <Button x:Name="btnUserManager" Click="btnUserManager_Click"  Margin="20">User Manager</Button>
                 <Button x:Name="btnLogout" Padding="3" Click="btnLogout_Click"  Margin="20">Logout</Button>
             </StackPanel>

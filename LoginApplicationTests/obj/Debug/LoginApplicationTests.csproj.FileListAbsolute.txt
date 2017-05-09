@@ -1,0 +1,17 @@
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\SqlUserDatabase.mdf
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\SqlUserDatabase_log.ldf
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginApplicationTests.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginApplicationTests.pdb
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginPanelApplication.exe
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginPanelApplication.pdb
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginPanelApplication.exe.config
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.csprojResolveAssemblyReference.cache
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.dll
+C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.pdb

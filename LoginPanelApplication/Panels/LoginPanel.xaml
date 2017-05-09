@@ -22,7 +22,7 @@
 
             <!-- This rectangle is animated. -->
             <Rectangle Name="myRectangle" 
-                       Width="100" Height="10" Margin="10,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                       Width="100" Height="10" Margin="5,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
                 <Rectangle.Fill>
                     <SolidColorBrush Color="#FFC98000" Opacity="0.4"/>
                 </Rectangle.Fill>
@@ -64,18 +64,19 @@
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
 
-            <Label VerticalAlignment="Center" Content="User Name:" FontWeight="Bold" />
-            <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="txtLogin" Margin="5"/>
+            <Label VerticalAlignment="Center" Content="User Name:" FontWeight="Bold" Margin="0,17" />
+            <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="txtLogin" Margin="5,19"/>
             <Label Grid.Row="1" Content="Password:"  FontWeight="Bold" HorizontalAlignment="left" VerticalAlignment="Top"/>
-            <PasswordBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  x:Name="txtPassword" Margin="5"/>
+            <PasswordBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  x:Name="txtPassword" Margin="5,5,5,0"/>
             <Label Grid.Row="1" Grid.Column="1"  
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Right" 
@@ -96,8 +97,8 @@
                     </Style>
                 </Label.Style>
             </Label>
-            <Button x:Name="btnLogin" Grid.Column="1" Grid.Row="1" Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60" Width="100" Click="btnLogin_Click"/>
-            <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="60" Width="100" Click="btnExit_Click" />
+            <Button x:Name="btnLogin" Grid.Column="1" Grid.Row="1" Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,60,0,0" Width="100" Click="btnLogin_Click" Grid.RowSpan="2"/>
+            <Button x:Name="btnExit" Grid.Column="1" Grid.Row="1" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,60,60,0" Width="100" Click="btnExit_Click" Grid.RowSpan="2" />
         </Grid>
     </Grid>
 

@@ -5,14 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="1000" d:DesignWidth="1200" Background="GhostWhite" x:Name="UserMgr"
+      d:DesignHeight="500" d:DesignWidth="900" Background="GhostWhite" x:Name="UserMgr"
       Title="UserManager">
 
     <Page.Resources>
         <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
     </Page.Resources>
     <Border BorderThickness="20" BorderBrush="AliceBlue">
-        <StackPanel Margin="0,50,0,0">
+        <Grid>
+        <StackPanel Margin="0,0,0,0">
             <GroupBox Margin="10"  FontSize="12.5">
                 <GroupBox.Header>
                     <Bold>Add new user with permission</Bold>
@@ -68,7 +69,7 @@
                     </Grid>
                 </StackPanel>
             </GroupBox>
-            <DataGrid Margin="10,40,10,10"  
+            <DataGrid Margin="10" MaxHeight="200"  
                   x:Name="DataGridManager" 
                   AlternatingRowBackground="AliceBlue"
                   AutoGenerateColumns="False"
@@ -77,11 +78,11 @@
                   CanUserDeleteRows="False"
                   CanUserReorderColumns="False"
                   MouseDoubleClick="DataGridManager_MouseDoubleClick"
-                      FrozenColumnCount="1"
+                      FrozenColumnCount="2"
                   >
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="100" Header="User ID" Binding="{Binding Path=UserID}">
+                    <DataGridTextColumn Width="Auto" Header="ID" Binding="{Binding Path=UserID}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="FontWeight" Value="Bold"/>
@@ -89,7 +90,7 @@
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
 
-                    <DataGridTextColumn  Width="100" Header="Name" Binding="{Binding Path=Name}">
+                    <DataGridTextColumn  Width="Auto" Header="Name" Binding="{Binding Path=Name}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="FontWeight" Value="Bold"/>
@@ -178,8 +179,9 @@
                     </Style>
                 </DataGrid.ItemContainerStyle>
             </DataGrid>
-            <Button Margin="10" x:Name="btnDeleteUser" Click="btnDeleteUser_Click">Delete Selected User</Button>
-            <Button Margin="10" x:Name="btnBack" Click="btnBack_Click">Back to Admin panel</Button>
-        </StackPanel>
+                <Button Margin="20,0,20,0" x:Name="btnDeleteUser" Click="btnDeleteUser_Click">Delete Selected User</Button>
+            </StackPanel> 
+             <Button VerticalAlignment="Bottom" DockPanel.Dock="Left" Margin="20,0,20,0" x:Name="btnBack" Click="btnBack_Click">Back to Admin panel</Button>
+            </Grid>
     </Border>
 </Page>

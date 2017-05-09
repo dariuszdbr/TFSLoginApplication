@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginPanelApplication", "LoginPanelApplication\LoginPanelApplication.csproj", "{E907C82E-B7D6-48BF-A86E-5C57ED095728}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginApplicationTests", "LoginApplicationTests\LoginApplicationTests.csproj", "{58D8A93B-A72C-4365-8C50-EA234F2820A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E907C82E-B7D6-48BF-A86E-5C57ED095728}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E907C82E-B7D6-48BF-A86E-5C57ED095728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E907C82E-B7D6-48BF-A86E-5C57ED095728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D8A93B-A72C-4365-8C50-EA234F2820A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D8A93B-A72C-4365-8C50-EA234F2820A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D8A93B-A72C-4365-8C50-EA234F2820A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D8A93B-A72C-4365-8C50-EA234F2820A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
