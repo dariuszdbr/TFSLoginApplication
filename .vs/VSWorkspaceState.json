@@ -3,9 +3,7 @@
     "",
     "\\LoginPanelApplication",
     "\\LoginPanelApplication\\Panels",
-    "\\LoginPanelApplication\\Properties",
-    "\\packages\\MSTest.TestAdapter.1.1.11",
-    "\\packages\\MSTest.TestFramework.1.1.11"
+    "\\LoginPanelApplication\\Properties"
   ],
   "SelectedNode": "\\LoginPanelApplication\\Panels\\AdminPanel.xaml",
   "PreviewInSolutionExplorer": false

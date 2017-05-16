@@ -27,7 +27,8 @@ namespace LoginPanelApplication.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Daiusz\\Desktop\\Repo\\" +
-            "LoginPanelApplication\\SqlUserDatabase.mdf;Integrated Security = True")]
+            "TFSLoginApplicationWithLINQ\\LoginPanelApplication\\SqlUserDatabase.mdf;Integrated" +
+            " Security=True")]
         public string connectionString {
             get {
                 return ((string)(this["connectionString"]));
