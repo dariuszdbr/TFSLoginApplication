@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\LoginPanelApplication",
+    "\\LoginPanelApplication\\Panels",
+    "\\LoginPanelApplication\\Properties",
+    "\\packages\\MSTest.TestAdapter.1.1.11",
+    "\\packages\\MSTest.TestFramework.1.1.11"
+  ],
+  "SelectedNode": "\\LoginPanelApplication\\Panels\\AdminPanel.xaml",
+  "PreviewInSolutionExplorer": false
+}

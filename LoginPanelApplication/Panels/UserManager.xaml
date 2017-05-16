@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="900" Background="GhostWhite" x:Name="UserMgr"
+      d:DesignHeight="600" d:DesignWidth="900" Background="GhostWhite" x:Name="UserMgr"
       Title="UserManager">
 
     <Page.Resources>

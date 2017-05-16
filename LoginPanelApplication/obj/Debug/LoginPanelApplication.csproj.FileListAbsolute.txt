@@ -53,3 +53,59 @@ C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLo
 C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
 C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
 C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\bin\Debug\SqlUserDatabase.mdf
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\bin\Debug\SqlUserDatabase_log.ldf
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe.config
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\bin\Debug\LoginPanelApplication.pdb
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\MainWindow.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\AdminPanel.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\LoginPanel.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserManager.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\App.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication_Content.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication_MarkupCompile.cache
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication_MarkupCompile.lref
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\MainWindow.baml
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\AdminPanel.baml
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.baml
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\LoginPanel.baml
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.baml
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserManager.baml
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.g.resources
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.Properties.Resources.resources
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
+C:\Users\Dariusz\Desktop\repo\New folder\TFSLoginApplication\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\MainWindow.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\AdminPanel.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\LoginPanel.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\UserManager.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\App.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication_Content.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication_MarkupCompile.cache
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication_MarkupCompile.lref
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\bin\Debug\SqlUserDatabase.mdf
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\bin\Debug\SqlUserDatabase_log.ldf
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe.config
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\bin\Debug\LoginPanelApplication.pdb
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\MainWindow.baml
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\AdminPanel.baml
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.baml
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\LoginPanel.baml
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.baml
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\UserManager.baml
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.g.resources
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.Properties.Resources.resources
+C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache

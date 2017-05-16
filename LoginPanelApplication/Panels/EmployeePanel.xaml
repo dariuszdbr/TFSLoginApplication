@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LoginPanelApplication.Panels"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="900" Background="AliceBlue"
+      d:DesignHeight="600" d:DesignWidth="900" Background="AliceBlue"
       Title="EmployeePanel">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition />
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" VerticalAlignment="Center">
@@ -26,54 +26,26 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="BlueViolet" BorderThickness="2">
+            <Border BorderBrush="BlueViolet" BorderThickness="2" Margin="5,5,0,5">
                 <StackPanel>
-                    <Label HorizontalContentAlignment="Center" FontWeight="Bold" Background="BlueViolet" FontFamily="Consolas">This is your board, You can add some notes. For example Done tasks</Label>
-                    <TextBox x:Name="txtAddNotes" Background="AliceBlue" Height="150"/>
+                    <Label HorizontalContentAlignment="Center" FontWeight="Bold" Background="BlueViolet" FontSize="11" FontFamily="Consolas">This is your board, You can add some notes. For example Done tasks</Label>
+                    <TextBox x:Name="txtAddNotes" Margin="4" Background="AliceBlue" Height="300" AcceptsReturn="True"/>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:Name="btnAddNotes"  Margin="50,10,10,10" Click="btnAddNotes_Click"  Width="100">Add note</Button>
-                        <Button x:Name="btnEditNotes" Margin="10"          Click="btnEditNotes_Click" Width="100">Edit</Button>
-                        <Button x:Name="btnClear"     Margin="10"          Click="btnClear_Click"     Width="100">Clear</Button>
+                        <Button x:Name="btnAddNotes"  Margin="70,0,0,0" Click="btnAddNotes_Click"  Width="100">Add note</Button>
+                        <Button x:Name="btnEditNotes" Margin="0"          Click="btnEditNotes_Click" Width="100">Edit</Button>
+                        <Button x:Name="btnClear"     Margin="0"          Click="btnClear_Click"     Width="100">Clear</Button>
                     </StackPanel>
                 </StackPanel>
             </Border>
-            <Border Grid.Column="1" BorderBrush="BlueViolet" BorderThickness="2">
+            <Border Grid.Column="1" BorderBrush="BlueViolet" BorderThickness="2" Margin="0,5,5,5">
                 <StackPanel >
                     <Label Background="BlueViolet" HorizontalContentAlignment="Center" FontFamily="Consolas" FontWeight="Bold">Daily notes</Label>
                     <ScrollViewer>
-                        <TextBlock x:Name="txtBlock" Height="150" Background="AliceBlue" TextWrapping="Wrap" Text="Done Tasks:
-                                   
-                                   
-                                   
-                                   1. 
-                                    
-                                    
-                                    
-                                   2.
-                                    
-                                   
-                                   
-                                   
-                                   3.
-                                   
-                                   
-                                   
-                                   4.
-                                    
-                                    
-                                   
-                                   
-                                   
-                                   5.
-                                   
-                                   
-                                   
-                                   6.
-                                   "/>
+                        <TextBlock Margin="4" x:Name="txtBlock" Height="350" Background="AliceBlue" TextWrapping="Wrap" Text="Done Tasks:"/>
                     </ScrollViewer>
                 </StackPanel>
             </Border>
         </Grid>
-        <Label Grid.Row="2" x:Name="lblCurrentUser" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Label Grid.Row="2" x:Name="lblCurrentUser" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,2"/>
     </Grid>
 </Page>

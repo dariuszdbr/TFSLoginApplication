@@ -22,19 +22,18 @@ namespace LoginPanelApplication.Panels
 
         private void btnFindPassword_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = new SqlCommand("SELECT * FROM Users WHERE Name = @Name AND LastName = @LastName AND Login = @Login", connection);
-            adapter.SelectCommand.Parameters.Add("@Name", SqlDbType.NVarChar).Value = txtName.Text;
-            adapter.SelectCommand.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = txtLastName.Text;
-            adapter.SelectCommand.Parameters.Add("@Login", SqlDbType.NVarChar).Value = txtUserLogin.Text;
-            DataTable dt = new DataTable();
+            SqlManager.dataAdapter = new SqlDataAdapter();
+            SqlManager.dataAdapter.SelectCommand = new SqlCommand("SELECT * FROM Users WHERE Name = @Name AND LastName = @LastName AND Login = @Login", SqlManager.Connection);
+            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Name", SqlDbType.NVarChar).Value = txtName.Text;
+            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = txtLastName.Text;
+            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Login", SqlDbType.NVarChar).Value = txtUserLogin.Text;
+            SqlManager.dataTable = new DataTable();
 
 
-            adapter.Fill(dt);
-            if (dt.Rows.Count > 0)
+            SqlManager.dataAdapter.Fill(SqlManager.dataTable);
+            if (SqlManager.dataTable.Rows.Count > 0)
             {
-                dgRestorePassword.ItemsSource = dt.DefaultView;
+                dgRestorePassword.ItemsSource = SqlManager.dataTable.DefaultView;
             }
             else
             {

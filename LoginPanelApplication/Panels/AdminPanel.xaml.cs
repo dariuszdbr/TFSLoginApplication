@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LoginPanelApplication.Panels
 {
@@ -32,16 +21,14 @@ namespace LoginPanelApplication.Panels
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             string update = "UPDATE Users SET LogoutDate = @LogoutDate WHERE UserID = @Id";
-            SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
-
-            SqlCommand updateCommand = new SqlCommand(update, connection);
+            SqlManager.updateCommand = new SqlCommand(update, SqlManager.Connection);
             SqlParameter paramUserId = new SqlParameter("@Id", AdminID);
-            updateCommand.Parameters.Add(paramUserId);
+            SqlManager.updateCommand.Parameters.Add(paramUserId);
 
-            connection.Open();
-            updateCommand.Parameters.AddWithValue("@LogoutDate", DateTime.Now);
-            updateCommand.ExecuteNonQuery();
-            connection.Close();
+            SqlManager.Connection.Open();
+            SqlManager.updateCommand.Parameters.AddWithValue("@LogoutDate", DateTime.Now);
+            SqlManager.updateCommand.ExecuteNonQuery();
+            SqlManager.Connection.Close();
 
             PageSwitcher.Navigate(new LoginPanel());
         }

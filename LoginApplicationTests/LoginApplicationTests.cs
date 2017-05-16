@@ -15,7 +15,7 @@ namespace LoginApplicationTests
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "admin";
             loginPanel.TestTxtPassword.Password = "admin";
-            loginPanel.GetSqlLogin();
+            loginPanel.GetSqlLoginForTest();
 
             var expected = 1; // admin Id
 
@@ -29,7 +29,7 @@ namespace LoginApplicationTests
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "Admin";
             loginPanel.TestTxtPassword.Password = "Admin";
-            loginPanel.GetSqlLogin();
+            loginPanel.GetSqlLoginForTest();
 
             int expected = 0; // ID
 
@@ -43,7 +43,7 @@ namespace LoginApplicationTests
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "ddąbrowski";
             loginPanel.TestTxtPassword.Password = "darek123";
-            loginPanel.GetSqlLogin();
+            loginPanel.GetSqlLoginForTest();
 
             var expected = 2; // employee Id
 
@@ -57,11 +57,24 @@ namespace LoginApplicationTests
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "ddąbrowski";
             loginPanel.TestTxtPassword.Password = "Darek123";
-            loginPanel.GetSqlLogin();
+            loginPanel.GetSqlLoginForTest();
 
             int expected = 0; // ID
 
             Assert.AreEqual(expected, loginPanel.TestUserID);
+        }
+
+        [TestMethod]
+        public void Should_Add_User()
+        {
+            MainWindow Window = new MainWindow();
+            LoginPanel loginPanel = new LoginPanel();
+            loginPanel.TestTxtLogin.Text = "admin";
+            loginPanel.TestTxtPassword.Password = "admin";
+            loginPanel.GetSqlLoginForTest();
+
+            object obj;
+            //obj.GetType().GetProperty()
         }
 
     }

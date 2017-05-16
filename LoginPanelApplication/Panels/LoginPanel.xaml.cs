@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Configuration;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Data;
 
 namespace LoginPanelApplication.Panels
@@ -28,34 +17,30 @@ namespace LoginPanelApplication.Panels
         public LoginPanel()
         {
             InitializeComponent();
+
         }
 
         private void Login()
         {
             string select = "Select * From Users WHERE Login = @Login and Password = @Password collate SQL_Latin1_General_Cp1_CS_AS";
-            string update = "Update Users SET LoginDate = @LoginDate WHERE UserID = @ID";
-            SqlConnection connection = new SqlConnection(ConnectionString.connectionString);
-            SqlCommand selectCommand = new SqlCommand(select, connection);
-            SqlParameter login = new SqlParameter("@Login", txtLogin.Text);
-            SqlParameter password = new SqlParameter("@Password", txtPassword.Password);
-            selectCommand.Parameters.Add(login);
-            selectCommand.Parameters.Add(password);
+            SqlManager.dataAdapter = new SqlDataAdapter();
+            SqlManager.dataAdapter.SelectCommand = new SqlCommand(select, SqlManager.Connection);
+            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Login", SqlDbType.NVarChar).Value = txtLogin.Text;
+            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Password", SqlDbType.NVarChar).Value = txtPassword.Password;
+            SqlManager.dataTable = new DataTable();
 
-            SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
-            DataTable dataTable = new DataTable();
+            SqlManager.dataAdapter.Fill(SqlManager.dataTable);
 
-            adapter.Fill(dataTable);
+            SqlManager.Connection.Open();
 
-            connection.Open();
-
-            if (dataTable.Rows.Count > 0)
+            if (SqlManager.dataTable.Rows.Count > 0)
             {
-                SqlCommand updateCommand = new SqlCommand(update, connection);  //Create command to update LoginDate
-                userId = Convert.ToInt32(dataTable.Rows[0]["UserID"]);          //Find current userId
-                SqlParameter userID = new SqlParameter("@ID", userId);          //Create parameter with actual Id
-                updateCommand.Parameters.Add(userID);                           //Add parameter to the command
+                string update = "Update Users SET LoginDate = @LoginDate WHERE UserID = @ID";
+                SqlCommand updateCommand = new SqlCommand(update, SqlManager.Connection);        //Create command to update LoginDate
+                userId = Convert.ToInt32(SqlManager.dataTable.Rows[0]["UserID"]);                //Find current userId
+                updateCommand.Parameters.Add("@ID", SqlDbType.Int).Value = userId;               //Add parameter to the command
 
-                var panelAdmin = Convert.ToBoolean(dataTable.Rows[0]["Status"]);
+                var panelAdmin = Convert.ToBoolean(SqlManager.dataTable.Rows[0]["Status"]);
                 if (panelAdmin == true)
                 {
                     updateCommand.Parameters.AddWithValue("@LoginDate", DateTime.Now); // Update Login Date
@@ -78,9 +63,7 @@ namespace LoginPanelApplication.Panels
                     txtPassword.Clear();
                 }
             }
-
-            connection.Close();
-
+            SqlManager.Connection.Close();
         }
 
 
@@ -110,7 +93,7 @@ namespace LoginPanelApplication.Panels
         public TextBox TestTxtLogin { get { return txtLogin; } }
         public PasswordBox TestTxtPassword { get { return txtPassword; } }
         public int TestUserID { get { return userId; } }
-        public void GetSqlLogin() { Login(); }
+        public void GetSqlLoginForTest() { Login(); }
     }
 }
 
