@@ -26,12 +26,11 @@ namespace LoginPanelApplication.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Daiusz\\Desktop\\Repo\\" +
-            "TFSLoginApplicationWithLINQ\\LoginPanelApplication\\SqlUserDatabase.mdf;Integrated" +
-            " Security=True")]
-        public string connectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SqlUserDataba" +
+            "se.mdf;Integrated Security=True")]
+        public string SqlUserDatabaseConnectionString {
             get {
-                return ((string)(this["connectionString"]));
+                return ((string)(this["SqlUserDatabaseConnectionString"]));
             }
         }
     }
