@@ -109,8 +109,6 @@ C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\Panels\UserManager.
 C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.g.resources
 C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.Properties.Resources.resources
 C:\Users\Daiusz\Desktop\Repo\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache
-C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\bin\Debug\SqlUserDatabase.mdf
-C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\bin\Debug\SqlUserDatabase_log.ldf
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe.config
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\bin\Debug\LoginPanelApplication.pdb
@@ -122,7 +120,6 @@ C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\o
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.g.cs
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\Panels\UserManager.g.cs
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\App.g.cs
-C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\LoginPanelApplication_Content.g.cs
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\LoginPanelApplication_MarkupCompile.cache
 C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginPanelApplication\obj\Debug\LoginPanelApplication_MarkupCompile.lref

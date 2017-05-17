@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 
 namespace LoginPanelApplication.Panels
 {
@@ -22,18 +23,15 @@ namespace LoginPanelApplication.Panels
 
         private void btnFindPassword_Click(object sender, RoutedEventArgs e)
         {
-            SqlManager.dataAdapter = new SqlDataAdapter();
-            SqlManager.dataAdapter.SelectCommand = new SqlCommand("SELECT * FROM Users WHERE Name = @Name AND LastName = @LastName AND Login = @Login", SqlManager.Connection);
-            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Name", SqlDbType.NVarChar).Value = txtName.Text;
-            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = txtLastName.Text;
-            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Login", SqlDbType.NVarChar).Value = txtUserLogin.Text;
-            SqlManager.dataTable = new DataTable();
 
+            //var person =( from user in LinqManager.usersDataContext.Users
+            //              where user.Login == txtUserLogin.Text && user.Name == txtName.Text && user.LastName == txtLastName.Text
+            //              select user );
+            var findPerson = LinqManager.usersDataContext.Users.Where( p => p.Name == txtName.Text && p.LastName == txtLastName.Text && p.Login == txtUserLogin.Text );
 
-            SqlManager.dataAdapter.Fill(SqlManager.dataTable);
-            if (SqlManager.dataTable.Rows.Count > 0)
+            if (findPerson != null)
             {
-                dgRestorePassword.ItemsSource = SqlManager.dataTable.DefaultView;
+                dgRestorePassword.ItemsSource = findPerson;
             }
             else
             {
@@ -43,7 +41,7 @@ namespace LoginPanelApplication.Panels
                     txtName.Clear();
                     txtUserLogin.Clear();
                     txtUserLogin.Focus();
-                } 
+                }
             }
         }
     }

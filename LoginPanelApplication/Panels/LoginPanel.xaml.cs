@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Data;
+using System.Linq;
+
 
 namespace LoginPanelApplication.Panels
 {
@@ -11,47 +13,31 @@ namespace LoginPanelApplication.Panels
     /// Interaction logic for LoginPanel.xaml
     /// </summary>
     public partial class LoginPanel : Page
-    { 
+    {
         int userId = 0;
 
         public LoginPanel()
         {
             InitializeComponent();
-
         }
 
         private void Login()
         {
-            string select = "Select * From Users WHERE Login = @Login and Password = @Password collate SQL_Latin1_General_Cp1_CS_AS";
-            SqlManager.dataAdapter = new SqlDataAdapter();
-            SqlManager.dataAdapter.SelectCommand = new SqlCommand(select, SqlManager.Connection);
-            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Login", SqlDbType.NVarChar).Value = txtLogin.Text;
-            SqlManager.dataAdapter.SelectCommand.Parameters.Add("@Password", SqlDbType.NVarChar).Value = txtPassword.Password;
-            SqlManager.dataTable = new DataTable();
-
-            SqlManager.dataAdapter.Fill(SqlManager.dataTable);
-
-            SqlManager.Connection.Open();
-
-            if (SqlManager.dataTable.Rows.Count > 0)
+            LinqManager.loggedInUser = LinqManager.usersDataContext.Users.Where( user => user.Login == txtLogin.Text && user.Password == txtPassword.Password ).First();
+                                
+            if (LinqManager.loggedInUser != null )
             {
-                string update = "Update Users SET LoginDate = @LoginDate WHERE UserID = @ID";
-                SqlCommand updateCommand = new SqlCommand(update, SqlManager.Connection);        //Create command to update LoginDate
-                userId = Convert.ToInt32(SqlManager.dataTable.Rows[0]["UserID"]);                //Find current userId
-                updateCommand.Parameters.Add("@ID", SqlDbType.Int).Value = userId;               //Add parameter to the command
-
-                var panelAdmin = Convert.ToBoolean(SqlManager.dataTable.Rows[0]["Status"]);
-                if (panelAdmin == true)
+                if (LinqManager.loggedInUser.Status == true)
                 {
-                    updateCommand.Parameters.AddWithValue("@LoginDate", DateTime.Now); // Update Login Date
-                    updateCommand.ExecuteNonQuery();                                   // Execute command
-                    PageSwitcher.Navigate(new AdminPanel(userId));                     // Switch to AdminPanel
+                    LinqManager.loggedInUser.LoginDate = DateTime.Now;
+                    LinqManager.usersDataContext.SubmitChanges();
+                    PageSwitcher.Navigate(new AdminPanel());                     // Switch to AdminPanel
                 }
                 else
                 {
-                    updateCommand.Parameters.AddWithValue("@LoginDate", DateTime.Now); // Update Login Date
-                    updateCommand.ExecuteNonQuery();                                   // Execute command
-                    PageSwitcher.Navigate(new EmployeePanel(userId));                  // Switch to EmployeePanel
+                    LinqManager.loggedInUser.LoginDate = DateTime.Now;
+                    LinqManager.usersDataContext.SubmitChanges();
+                    PageSwitcher.Navigate(new EmployeePanel());                  // Switch to EmployeePanel
                 }
             }
             else
@@ -63,7 +49,6 @@ namespace LoginPanelApplication.Panels
                     txtPassword.Clear();
                 }
             }
-            SqlManager.Connection.Close();
         }
 
 

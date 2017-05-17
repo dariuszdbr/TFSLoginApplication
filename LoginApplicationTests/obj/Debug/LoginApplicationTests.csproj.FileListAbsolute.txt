@@ -15,3 +15,18 @@ C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLo
 C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.csprojResolveAssemblyReference.cache
 C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.dll
 C:\Users\Darek\Documents\Visual Studio 2017\Projects\LoginPanelApplication\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.pdb
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\LoginApplicationTests.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\LoginApplicationTests.pdb
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\LoginPanelApplication.exe
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\LoginPanelApplication.pdb
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\LoginPanelApplication.exe.config
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\obj\Debug\LoginApplicationTests.csprojResolveAssemblyReference.cache
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\obj\Debug\LoginApplicationTests.dll
+C:\Users\Daiusz\Desktop\Repo\TFSLoginApplicationWithLINQ\LoginApplicationTests\obj\Debug\LoginApplicationTests.pdb

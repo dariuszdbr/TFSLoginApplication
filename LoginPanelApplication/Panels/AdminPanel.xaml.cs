@@ -10,32 +10,21 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class AdminPanel : Page
     {
-        int AdminID;
-
-        public AdminPanel(int userid)
+        public AdminPanel()
         {
             InitializeComponent();
-            AdminID = userid;
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            string update = "UPDATE Users SET LogoutDate = @LogoutDate WHERE UserID = @Id";
-            SqlManager.updateCommand = new SqlCommand(update, SqlManager.Connection);
-            SqlParameter paramUserId = new SqlParameter("@Id", AdminID);
-            SqlManager.updateCommand.Parameters.Add(paramUserId);
-
-            SqlManager.Connection.Open();
-            SqlManager.updateCommand.Parameters.AddWithValue("@LogoutDate", DateTime.Now);
-            SqlManager.updateCommand.ExecuteNonQuery();
-            SqlManager.Connection.Close();
-
+            LinqManager.loggedInUser.LogoutDate = DateTime.Now;
+            LinqManager.usersDataContext.SubmitChanges();
             PageSwitcher.Navigate(new LoginPanel());
         }
 
         private void btnUserManager_Click(object sender, RoutedEventArgs e)
         {
-            PageSwitcher.Navigate(new UserManager(AdminID));
+            PageSwitcher.Navigate(new UserManager());
         }
     }
 }

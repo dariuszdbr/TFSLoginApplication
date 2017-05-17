@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:LoginPanelApplication.Panels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="LoginPanel"  Width=" 700" Height="400"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="GhostWhite">
+      Title="LoginPanel"  Width=" 700" Height="400"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="GhostWhite" >
 
     <Grid KeyDown="Grid_KeyDown">
         <Grid.RowDefinitions>
