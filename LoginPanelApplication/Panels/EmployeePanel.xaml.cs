@@ -22,7 +22,7 @@ namespace LoginPanelApplication.Panels
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             LinqManager.loggedInUser.LogoutDate = DateTime.Now;
-            LinqManager.loggedInUser.WorkingTime = LinqManager.loggedInUser.LogoutDate - LinqManager.loggedInUser.LogoutDate;
+            LinqManager.loggedInUser.WorkingTime = LinqManager.loggedInUser.LogoutDate - LinqManager.loggedInUser.LoginDate;
             LinqManager.usersDataContext.SubmitChanges();
 
             PageSwitcher.Navigate(new LoginPanel());
