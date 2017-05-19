@@ -62,7 +62,7 @@
 
                             <StackPanel Grid.Column="2">
                                 <Button x:Name="btnAddUser" Click="btnAddUser_Click" Margin="10" VerticalAlignment ="Top">Add User</Button>
-                                <Button x:Name="btnUpdate" Click="btnUpdate_Click"   Margin="10" VerticalAlignment ="Center">Update User Data</Button>
+                                <Button x:Name="btnUpdate" Click="btnUpdate_Click"   Margin="10" VerticalAlignment ="Center">Change Password</Button>
                                 <Button x:Name="btnClear" Click="btnClear_Click"     Margin="10" VerticalAlignment ="Bottom">Clear / Cancel</Button>
                             </StackPanel>
                         </Grid>

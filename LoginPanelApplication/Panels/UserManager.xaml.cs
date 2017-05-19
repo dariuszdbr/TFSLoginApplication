@@ -186,7 +186,7 @@ namespace LoginPanelApplication.Panels
                 }
                 else
                 {
-                    user.Password = txtPassword.Text;
+                    user.Password = IsPasswordCorrect(txtPassword.Text) ? txtPassword.Text : Password.Generate();
                     LinqManager.usersDataContext.SubmitChanges();
 
                     if (MessageBox.Show("Record(s) has been sucessfully updated", "Update report", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
@@ -220,15 +220,16 @@ namespace LoginPanelApplication.Panels
         static Random upperCase = new Random();
         static Random digit = new Random();
         static Random index = new Random();
-        static string password = String.Empty;
+        static string password;
 
         public static string Generate()
-        {           
+        {
+            password = String.Empty;
             do
             {
-                password += Convert.ToChar(upperCase.Next(65, 90));
-                password += Convert.ToChar(digit.Next(48, 57));
-                password += Convert.ToChar(lowerCase.Next(97, 122));
+                password += Convert.ToChar(upperCase.Next(65, 91));
+                password += digit.Next(1, 10);
+                password += Convert.ToChar(lowerCase.Next(97, 123));
                  
             } while (password.Length < 8);
 
