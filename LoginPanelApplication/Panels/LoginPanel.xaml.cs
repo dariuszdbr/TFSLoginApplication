@@ -23,10 +23,11 @@ namespace LoginPanelApplication.Panels
 
         private void Login()
         {
-            LinqManager.loggedInUser = LinqManager.usersDataContext.Users.Where( user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)).First();
-                                
-            if (LinqManager.loggedInUser != null )
+                               
+            if (LinqManager.usersDataContext.Users.Any(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)))
             {
+                LinqManager.loggedInUser = LinqManager.usersDataContext.Users.Where(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)).First();
+
                 if (LinqManager.loggedInUser.Status == true)
                 {
                     LinqManager.loggedInUser.LoginDate = DateTime.Now;
