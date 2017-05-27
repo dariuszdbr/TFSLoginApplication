@@ -26,8 +26,9 @@ namespace LoginPanelApplication.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SqlUserDataba" +
-            "se.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Daiusz\\Desktop\\Repo" +
+            "\\newLinq\\Nowy folder\\TFSLoginApplication\\LoginPanelApplication\\SqlUserDatabase.m" +
+            "df\";Integrated Security=True;Connect Timeout=30")]
         public string SqlUserDatabaseConnectionString {
             get {
                 return ((string)(this["SqlUserDatabaseConnectionString"]));

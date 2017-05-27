@@ -23,20 +23,27 @@ namespace LoginPanelApplication.Panels
 
         private void Login()
         {
-                               
-            if (LinqManager.usersDataContext.Users.Any(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)))
-            {
-                LinqManager.loggedInUser = LinqManager.usersDataContext.Users.Where(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)).First();
 
-                if (LinqManager.loggedInUser.Status == true)
+            //var loggedUser = (from x in LinqManager.usersDataContext.LoginDatas
+            //                  where x.Login.Equals(txtLogin) && x.Password.Equals(txtPassword)
+            //                  select x.User) as User;
+
+            
+            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)))
+            {
+                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.Where(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)).First().User;
+                
+                if (LinqManager.loggedInUser.Role == true)
                 {
-                    LinqManager.loggedInUser.LoginDate = DateTime.Now;
-                    LinqManager.usersDataContext.SubmitChanges();
+                    //LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null, WorkingHours = null };
+                    //LinqManager.usersDataContext.Loginfos.InsertOnSubmit(LinqManager.logInfo);
+                    //LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new AdminPanel());                     // Switch to AdminPanel
                 }
                 else
                 {
-                    LinqManager.loggedInUser.LoginDate = DateTime.Now;
+                    LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null, WorkingHours = null };
+                    LinqManager.usersDataContext.Loginfos.InsertOnSubmit(LinqManager.logInfo);
                     LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new EmployeePanel());                  // Switch to EmployeePanel
                 }

@@ -4,6 +4,9 @@
     {
         public static UserDatabaseDataContext usersDataContext;
         public static User loggedInUser;
+        public static Loginfo logInfo;
+        
+
 
         static LinqManager()
         {

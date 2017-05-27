@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 
 namespace LoginPanelApplication.Panels
 {
@@ -21,8 +22,8 @@ namespace LoginPanelApplication.Panels
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            LinqManager.loggedInUser.LogoutDate = DateTime.Now;
-            LinqManager.loggedInUser.WorkingTime = LinqManager.loggedInUser.LogoutDate - LinqManager.loggedInUser.LoginDate;
+            LinqManager.logInfo.LogoutDate = DateTime.Now;
+            LinqManager.logInfo.WorkingHours = LinqManager.logInfo.LogoutDate - LinqManager.logInfo.LoginDate;
             LinqManager.usersDataContext.SubmitChanges();
 
             PageSwitcher.Navigate(new LoginPanel());
@@ -30,9 +31,9 @@ namespace LoginPanelApplication.Panels
 
         private void SetLabelContent()
         {
-            string loginDate = LinqManager.loggedInUser.LoginDate.ToString();
+            string loginDate = LinqManager.logInfo.LoginDate.ToString();
             string name = LinqManager.loggedInUser.Name;
-            string login = LinqManager.loggedInUser.Login;
+            string login = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(LinqManager.loggedInUser.UserID)).First().Login;
 
             lblCurrentUser.Content = "Welcome " + name + " (" + login + ")   " + " Login date: " + loginDate + ". Have a nice day :). \n";
         }

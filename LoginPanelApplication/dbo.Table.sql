@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Login]
+(
+	[LoginId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [UserID] INT NOT NULL, 
+    [Login]		NVARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL, 
+    [Password]	NVARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL, 
+    CONSTRAINT [FK_Login_Users] FOREIGN KEY ([UserID]) REFERENCES [Users]([UserID])
+)

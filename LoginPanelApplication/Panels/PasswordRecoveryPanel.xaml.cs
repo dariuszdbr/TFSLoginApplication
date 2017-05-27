@@ -27,7 +27,7 @@ namespace LoginPanelApplication.Panels
             //var person =( from user in LinqManager.usersDataContext.Users
             //              where user.Login == txtUserLogin.Text && user.Name == txtName.Text && user.LastName == txtLastName.Text
             //              select user );
-            var findPerson = LinqManager.usersDataContext.Users.Where( p => p.Name == txtName.Text && p.LastName == txtLastName.Text && p.Login == txtUserLogin.Text );
+            var findPerson = LinqManager.usersDataContext.Users.Where( p => p.Name == txtName.Text && p.LastName == txtLastName.Text /*&& p.Login == txtUserLogin.Text */);
 
             if (findPerson != null)
             {

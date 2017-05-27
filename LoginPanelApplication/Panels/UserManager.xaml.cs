@@ -23,7 +23,14 @@ namespace LoginPanelApplication.Panels
         private void DisplayUsers()
         {
             LinqManager.usersDataContext = new UserDatabaseDataContext();
-            DataGridManager.ItemsSource = LinqManager.usersDataContext.Users;
+            var Join = (from a in LinqManager.usersDataContext.Users
+                        join b in LinqManager.usersDataContext.LoginDatas
+                        on a.UserID equals b.UserID
+                        join c in  LinqManager.usersDataContext.Loginfos
+                        on b.UserID equals c.UserID 
+                        select  new { a.UserID, a.Name, a.LastName, a.Role, b.Login, b.Password, a.Status, c.LoginDate, c.LogoutDate, c.WorkingHours, a.DateOfEmployment });
+
+            DataGridManager.ItemsSource = Join;
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
@@ -38,7 +45,7 @@ namespace LoginPanelApplication.Panels
             }
             else
             {
-                var status = (permissionAdmin.IsChecked == true) ? true : false;
+                var role = (permissionAdmin.IsChecked == true) ? true : false;
                 var password = (IsPasswordCorrect(txtPassword.Text)) ? txtPassword.Text : Password.Generate();
                 var login = GenerateLogin(txtName.Text, txtLastName.Text);
 
@@ -46,19 +53,24 @@ namespace LoginPanelApplication.Panels
                 {
                     Name = txtName.Text,
                     LastName = txtLastName.Text,
-                    Login = login,
-                    Password = password,
-                    Status = status,
-                    LoginDate = null,
-                    LogoutDate = null,
-                    WorkingTime = null,
-                    DateOfEmployment = DateTime.Now
+                    Status = true, //active
+                    DateOfEmployment = DateTime.Now,
+                    Role = role            
                 };
 
+                LoginData newUserLoginAndPassword = new LoginData()
+                {
+                    Login = login,
+                    Password = password
+                };
+
+                newUser.LoginDatas.Add(newUserLoginAndPassword);
                 LinqManager.usersDataContext.Users.InsertOnSubmit(newUser);
+
                 try
                 {
                     LinqManager.usersDataContext.SubmitChanges();
+                    LinqManager.usersDataContext.Log = Console.Out;
                 }
                 catch (Exception ex)
                 {
@@ -75,6 +87,7 @@ namespace LoginPanelApplication.Panels
             byte IsOneUppercaseLetter = 0;
             byte IsOneDigit = 0;
             byte isOneLowercaseLetter = 0;
+
             for (int i = 0; i < password.Length; i++)
             {
                 if (password[i] >= 65 && password[i] <= 90)
@@ -102,7 +115,7 @@ namespace LoginPanelApplication.Panels
 
                 LinqManager.usersDataContext = new UserDatabaseDataContext();
 
-                var checkUsers = (LinqManager.usersDataContext.Users.Where( user => user.Login == login ));
+                var checkUsers = (LinqManager.usersDataContext.LoginDatas.Where( user => user.Login == login ));
 
                 if (checkUsers.Count() > 0)
                 {
@@ -126,80 +139,80 @@ namespace LoginPanelApplication.Panels
 
         private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
         {
-            User user = DataGridManager.SelectedItem as User;
+            //User user = DataGridManager.SelectedItem as User;
 
-            if (user != null)
-            {
-                MessageBoxResult result = MessageBox.Show("Are you sure?\nThere is no undo once data is deleted!", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            //if (user != null)
+            //{
+            //    MessageBoxResult result = MessageBox.Show("Are you sure?\nThere is no undo once data is deleted!", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                if (result == MessageBoxResult.Yes)
-                {
-                    try
-                    {
-                        LinqManager.usersDataContext.Users.DeleteOnSubmit(user);
-                        LinqManager.usersDataContext.SubmitChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Something went wrong: " + ex.Message);
-                    }
-                    finally
-                    {
-                       DisplayUsers();
-                    }                     
-                }
-                else
-                {
-                    MessageBox.Show("Deletion canceled");
-                }
-            }
-            else
-                MessageBox.Show("Please select first the user You want to Delete", "Delete result", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    if (result == MessageBoxResult.Yes)
+            //    {
+            //        try
+            //        {
+            //            LinqManager.usersDataContext.LoginDatas.DeleteOnSubmit(user);
+            //            LinqManager.usersDataContext.SubmitChanges();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show("Something went wrong: " + ex.Message);
+            //        }
+            //        finally
+            //        {
+            //           DisplayUsers();
+            //        }                     
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Deletion canceled");
+            //    }
+            //}
+            //else
+            //    MessageBox.Show("Please select first the user You want to Delete", "Delete result", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void DataGridManager_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            User user = DataGridManager.SelectedItem as User;
+            //User user = DataGridManager.SelectedItem as User;
 
-            txtName.IsReadOnly = true;
-            txtLastName.IsReadOnly = true;
-            txtName.Text = user.Name;
-            txtLastName.Text = user.LastName;
-            txtPassword.Text = user.Password;
+            //txtName.IsReadOnly = true;
+            //txtLastName.IsReadOnly = true;
+            //txtName.Text = user.Name;
+            //txtLastName.Text = user.LastName;
+            //txtPassword.Text = user.Password;
 
-            txtPassword.Focus();
-            txtPassword.SelectAll();
+            //txtPassword.Focus();
+            //txtPassword.SelectAll();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 
-            User user = DataGridManager.SelectedItem as User;
+            //User user = DataGridManager.SelectedItem as User;
 
-            if (user != null)
-            {
-                if (txtPassword.Text.Length < 8 && !IsPasswordCorrect(txtPassword.Text))
-                {
-                    MessageBox.Show("The the password should contain at least 8 characters with one uppercase letter and one digit");
-                    txtPassword.Focus();
-                    txtPassword.SelectAll();
-                }
-                else
-                {
-                    user.Password = IsPasswordCorrect(txtPassword.Text) ? txtPassword.Text : Password.Generate();
-                    LinqManager.usersDataContext.SubmitChanges();
+            //if (user != null)
+            //{
+            //    if (txtPassword.Text.Length < 8 && !IsPasswordCorrect(txtPassword.Text))
+            //    {
+            //        MessageBox.Show("The the password should contain at least 8 characters with one uppercase letter and one digit");
+            //        txtPassword.Focus();
+            //        txtPassword.SelectAll();
+            //    }
+            //    else
+            //    {
+            //        user.Password = IsPasswordCorrect(txtPassword.Text) ? txtPassword.Text : Password.Generate();
+            //        LinqManager.usersDataContext.SubmitChanges();
 
-                    if (MessageBox.Show("Record(s) has been sucessfully updated", "Update report", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
-                    {
-                        DisplayUsers();
-                        btnClear_Click(sender, e);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please press the mouse button twice on the selected user in the table and then make changes.", "Update report", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
+            //        if (MessageBox.Show("Record(s) has been sucessfully updated", "Update report", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
+            //        {
+            //            DisplayUsers();
+            //            btnClear_Click(sender, e);
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please press the mouse button twice on the selected user in the table and then make changes.", "Update report", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            //}
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)

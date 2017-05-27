@@ -17,8 +17,8 @@ namespace LoginPanelApplication.Panels
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            LinqManager.loggedInUser.LogoutDate = DateTime.Now;
-            LinqManager.usersDataContext.SubmitChanges();
+            //LinqManager.logInfo.LogoutDate = DateTime.Now;
+            //LinqManager.usersDataContext.SubmitChanges();
             PageSwitcher.Navigate(new LoginPanel());
         }
 
