@@ -9,7 +9,8 @@
       Title="UserManager">
 
     <Page.Resources>
-        <converter:BoolToUserRoleConverter x:Key="BoolToUserStatusConverter" />
+        <converter:BoolToUserRoleConverter x:Key="BoolToUserRoleConverter" />
+        <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
     </Page.Resources>
     <Border BorderThickness="20" BorderBrush="AliceBlue">
         <Grid>
@@ -79,6 +80,7 @@
                   CanUserReorderColumns="False"
                   MouseDoubleClick="DataGridManager_MouseDoubleClick"
                       FrozenColumnCount="2"
+                      IsReadOnly="True"
                   >
 
                 <DataGrid.Columns>
@@ -122,7 +124,7 @@
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
 
-                    <DataGridTextColumn Width="100" Header="Role" Binding="{Binding Path=Role, Converter={StaticResource BoolToUserStatusConverter}}">
+                    <DataGridTextColumn Width="100" Header="Role" Binding="{Binding Path=Role, Converter={StaticResource BoolToUserRoleConverter}}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="FontWeight" Value="Bold"/>
@@ -162,13 +164,13 @@
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
 
-                        <DataGridComboBoxColumn Header="Status" x:Name="comboBoxStatus" SelectedValueBinding="{Binding Path=Status}"  >
-                            <DataGridComboBoxColumn.HeaderStyle>
+                        <DataGridTextColumn Header="Status" x:Name="comboBoxStatus" Binding="{Binding Path=Status, Converter={StaticResource BoolToUserStatusConverter}}"  >
+                            <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
                                 </Style>
-                            </DataGridComboBoxColumn.HeaderStyle>
-                        </DataGridComboBoxColumn>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
 
                 </DataGrid.Columns>
                 <DataGrid.ItemContainerStyle>

@@ -160,7 +160,6 @@ C:\Users\Dariusz\Desktop\repo\LoginAppLinq\TFSLoginApplicationLinQ\TFSLoginAppli
 C:\Users\Dariusz\Desktop\repo\LoginAppLinq\TFSLoginApplicationLinQ\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
 C:\Users\Dariusz\Desktop\repo\LoginAppLinq\TFSLoginApplicationLinQ\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
 C:\Users\Dariusz\Desktop\repo\LoginAppLinq\TFSLoginApplicationLinQ\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication_Content.g.cs
-C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\MainWindow.g.cs
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\AdminPanel.g.cs
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.g.cs

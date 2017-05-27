@@ -31,6 +31,7 @@ namespace LoginPanelApplication.Panels
                         select  new { a.UserID, a.Name, a.LastName, a.Role, b.Login, b.Password, a.Status, c.LoginDate, c.LogoutDate, c.WorkingHours, a.DateOfEmployment });
 
             DataGridManager.ItemsSource = Join;
+            
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
