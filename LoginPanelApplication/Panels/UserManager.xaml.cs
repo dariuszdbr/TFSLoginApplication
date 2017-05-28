@@ -26,19 +26,16 @@ namespace LoginPanelApplication.Panels
             var Join = (from a in LinqManager.usersDataContext.Users
                         join b in LinqManager.usersDataContext.LoginDatas
                         on a.UserID equals b.UserID
-                        join c in  LinqManager.usersDataContext.Loginfos
-                        on b.UserID equals c.UserID 
-                        select  new { a.UserID, a.Name, a.LastName, a.Role, b.Login, b.Password, a.Status, c.LoginDate, c.LogoutDate, c.WorkingHours, a.DateOfEmployment });
+                        select  new { a.UserID, a.Name, a.LastName, a.Role, a.In, a.Out, a.DateOfEmployment, b.Login, b.Password, a.Status,   }).Skip(1);
 
-            DataGridManager.ItemsSource = Join;
-            
+            DataGridManager.ItemsSource = Join;           
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
-            if(txtName.Text.Length < 1 || txtLastName.Text.Length < 1 || (permissionAdmin.IsChecked == false && permissionEmployee.IsChecked == false) || (txtPassword.Text.Length > 0 && txtPassword.Text.Length < 8 ))
+            if(txtName.Text.Length < 1 || txtLastName.Text.Length < 1 /*|| (permissionAdmin.IsChecked == false && permissionEmployee.IsChecked == false) */|| (txtPassword.Text.Length > 0 && txtPassword.Text.Length < 8 ))
             {
-                MessageBox.Show("Please fill Name, Last Name, and select permission\nRemember, the password can be automatically  generated only if you leave the Password field blank. " +
+                MessageBox.Show("Please fill Name, Last Name.\nRemember, the password can be automatically  generated only if you leave the Password field blank. " +
                                 "Otherwise the password should contain at least 8 characters with one uppercase letter and one digit",
                                 "Name, Surname and Permission Required", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 txtName.Focus();
@@ -46,7 +43,7 @@ namespace LoginPanelApplication.Panels
             }
             else
             {
-                var role = (permissionAdmin.IsChecked == true) ? true : false;
+                var role = /*(permissionAdmin.IsChecked == true) ? true : */false;
                 var password = (IsPasswordCorrect(txtPassword.Text)) ? txtPassword.Text : Password.Generate();
                 var login = GenerateLogin(txtName.Text, txtLastName.Text);
 
@@ -56,7 +53,8 @@ namespace LoginPanelApplication.Panels
                     LastName = txtLastName.Text,
                     Status = true, //active
                     DateOfEmployment = DateTime.Now,
-                    Role = role            
+                    Role = role,
+                    ChangePassword = true,                 
                 };
 
                 LoginData newUserLoginAndPassword = new LoginData()
@@ -65,6 +63,14 @@ namespace LoginPanelApplication.Panels
                     Password = password
                 };
 
+                Loginfo newUserLoginfo = new Loginfo()
+                {
+                    LoginDate = null,
+                    LogoutDate = null,
+                    WorkingHours = null
+                };
+
+                newUser.Loginfos.Add(newUserLoginfo);
                 newUser.LoginDatas.Add(newUserLoginAndPassword);
                 LinqManager.usersDataContext.Users.InsertOnSubmit(newUser);
 
@@ -171,49 +177,40 @@ namespace LoginPanelApplication.Panels
             //    MessageBox.Show("Please select first the user You want to Delete", "Delete result", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void DataGridManager_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //User user = DataGridManager.SelectedItem as User;
-
-            //txtName.IsReadOnly = true;
-            //txtLastName.IsReadOnly = true;
-            //txtName.Text = user.Name;
-            //txtLastName.Text = user.LastName;
-            //txtPassword.Text = user.Password;
-
-            //txtPassword.Focus();
-            //txtPassword.SelectAll();
-        }
-
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 
-            //User user = DataGridManager.SelectedItem as User;
+            var selectedItem = DataGridManager.SelectedItem;
+            
 
-            //if (user != null)
-            //{
-            //    if (txtPassword.Text.Length < 8 && !IsPasswordCorrect(txtPassword.Text))
-            //    {
-            //        MessageBox.Show("The the password should contain at least 8 characters with one uppercase letter and one digit");
-            //        txtPassword.Focus();
-            //        txtPassword.SelectAll();
-            //    }
-            //    else
-            //    {
-            //        user.Password = IsPasswordCorrect(txtPassword.Text) ? txtPassword.Text : Password.Generate();
-            //        LinqManager.usersDataContext.SubmitChanges();
+            if (selectedItem != null)
+            {
+                var ID = selectedItem.GetType().GetProperty("UserID").GetValue(selectedItem);
+                User user = LinqManager.usersDataContext.Users.Where(x => x.UserID.Equals(ID)).First();
+                LoginData loginData = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(ID)).First();
 
-            //        if (MessageBox.Show("Record(s) has been sucessfully updated", "Update report", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
-            //        {
-            //            DisplayUsers();
-            //            btnClear_Click(sender, e);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Please press the mouse button twice on the selected user in the table and then make changes.", "Update report", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            //}
+                if (txtPassword.Text.Length < 8 && !IsPasswordCorrect(txtPassword.Text))
+                {
+                    MessageBox.Show("The the password should contain at least 8 characters with one uppercase letter and one digit");
+                    txtPassword.Focus();
+                    txtPassword.SelectAll();
+                }
+                else
+                {
+                    loginData.Password = IsPasswordCorrect(txtPassword.Text) ? txtPassword.Text : Password.Generate();
+                    LinqManager.usersDataContext.SubmitChanges();
+
+                    if (MessageBox.Show("Record(s) has been sucessfully updated", "Update report", MessageBoxButton.OK, MessageBoxImage.Information) == MessageBoxResult.OK)
+                    {
+                        DisplayUsers();
+                        btnClear_Click(sender, e);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please press the mouse button twice on the selected user in the table and then make changes.", "Update report", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -224,6 +221,34 @@ namespace LoginPanelApplication.Panels
             txtName.Clear();
             txtPassword.Clear();
             txtName.Focus();
+        }
+
+        private void DataGridManager_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = DataGridManager.SelectedItem;
+
+            var ID = selectedItem.GetType().GetProperty("UserID").GetValue(selectedItem);
+            User user = LinqManager.usersDataContext.Users.Where(x => x.UserID.Equals(ID)).First();
+            LoginData loginData = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(ID)).First();
+
+
+            UserDetails userdetails = new UserDetails(user);
+            userdetails.ShowDialog();
+
+            //txtName.IsReadOnly = true;
+            //    txtLastName.IsReadOnly = true;
+            //    txtName.Text = user.Name;
+            //    txtLastName.Text = user.LastName;
+            //    txtPassword.Text = loginData.Password;
+
+            //    txtPassword.Focus();
+            //    txtPassword.SelectAll();
+        }
+
+
+        private void btnEditUser_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

@@ -187,3 +187,6 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelA
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
+C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
+C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserDetails.g.cs
+C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserDetails.baml

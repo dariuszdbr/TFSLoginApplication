@@ -24,6 +24,7 @@ namespace LoginPanelApplication.Panels
         {
             LinqManager.logInfo.LogoutDate = DateTime.Now;
             LinqManager.logInfo.WorkingHours = LinqManager.logInfo.LogoutDate - LinqManager.logInfo.LoginDate;
+            LinqManager.loggedInUser.Out = LinqManager.logInfo.LogoutDate;
             LinqManager.usersDataContext.SubmitChanges();
 
             PageSwitcher.Navigate(new LoginPanel());

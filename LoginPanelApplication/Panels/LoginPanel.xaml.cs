@@ -43,6 +43,7 @@ namespace LoginPanelApplication.Panels
                 else
                 {
                     LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null, WorkingHours = null };
+                    LinqManager.loggedInUser.In = LinqManager.logInfo.LoginDate;
                     LinqManager.usersDataContext.Loginfos.InsertOnSubmit(LinqManager.logInfo);
                     LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new EmployeePanel());                  // Switch to EmployeePanel

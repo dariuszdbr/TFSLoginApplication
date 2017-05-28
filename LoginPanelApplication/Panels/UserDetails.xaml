@@ -1,0 +1,61 @@
+﻿<Window x:Class="LoginPanelApplication.Panels.UserDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
+        mc:Ignorable="d"
+        Title="User Details" Height="500" Width="700">
+    <Window.Resources>
+        <converter:BoolToUserRoleConverter x:Key="BoolToUserRoleConverter" />
+        <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+    <StackPanel Margin="10" x:Name="StackPanelDetails">
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Width="100">UserId:</Label>
+            <TextBlock Width="150" Text="{Binding Path=UserID, Mode=OneWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Width="100">Login:</Label>
+                <TextBlock Width="150" Text="{Binding Path=Login, Mode=OneWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Width="100">Password:</Label>
+            <TextBox Width="150" Text="{Binding Path=Password, Mode=OneWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Width="100" >Name:</Label>
+                <TextBox Width="150" Text="{Binding Path=Name, Mode=OneWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Width="100" >Last Name:</Label>
+                <TextBox Width="150" Text="{Binding Path=LastName, Mode=OneWay}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Label Width="100" >Role:</Label>
+                <TextBox Width="150" Text="{Binding Path=Role, Mode=OneWay , Converter={StaticResource BoolToUserRoleConverter} }"/>
+        </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100" >Hired on:</Label>
+                <TextBox Width="150" Text="{Binding Path=DateOfEmployment, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100">Status</Label>
+                <ComboBox/>
+            </StackPanel>
+        <Button x:Name="Back" Click="Back_Click">Back</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <DataGrid x:Name="UserDataGrid">
+
+            </DataGrid>
+            
+        </StackPanel>
+    </Grid>
+</Window>
