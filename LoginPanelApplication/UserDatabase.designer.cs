@@ -33,16 +33,16 @@ namespace LoginPanelApplication
     partial void InsertLoginData(LoginData instance);
     partial void UpdateLoginData(LoginData instance);
     partial void DeleteLoginData(LoginData instance);
-    partial void InsertLoginfo(Loginfo instance);
-    partial void UpdateLoginfo(Loginfo instance);
-    partial void DeleteLoginfo(Loginfo instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertLoginfo(Loginfo instance);
+    partial void UpdateLoginfo(Loginfo instance);
+    partial void DeleteLoginfo(Loginfo instance);
     #endregion
 		
 		public UserDatabaseDataContext() : 
-				base(global::LoginPanelApplication.Properties.Settings.Default.SqlUserDatabaseConnectionString, mappingSource)
+				base(global::LoginPanelApplication.Properties.Settings.Default.SqlUserDatabaseConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -79,19 +79,19 @@ namespace LoginPanelApplication
 			}
 		}
 		
-		public System.Data.Linq.Table<Loginfo> Loginfos
-		{
-			get
-			{
-				return this.GetTable<Loginfo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
 				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Loginfo> Loginfos
+		{
+			get
+			{
+				return this.GetTable<Loginfo>();
 			}
 		}
 	}
@@ -239,205 +239,6 @@ namespace LoginPanelApplication
 					if ((value != null))
 					{
 						value.LoginDatas.Add(this);
-						this._UserID = value.UserID;
-					}
-					else
-					{
-						this._UserID = default(int);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Loginfo")]
-	public partial class Loginfo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _UserID;
-		
-		private System.Nullable<System.DateTime> _LoginDate;
-		
-		private System.Nullable<System.DateTime> _LogoutDate;
-		
-		private System.Nullable<System.TimeSpan> _WorkingHours;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnLoginDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnLoginDateChanged();
-    partial void OnLogoutDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnLogoutDateChanged();
-    partial void OnWorkingHoursChanging(System.Nullable<System.TimeSpan> value);
-    partial void OnWorkingHoursChanged();
-    #endregion
-		
-		public Loginfo()
-		{
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> LoginDate
-		{
-			get
-			{
-				return this._LoginDate;
-			}
-			set
-			{
-				if ((this._LoginDate != value))
-				{
-					this.OnLoginDateChanging(value);
-					this.SendPropertyChanging();
-					this._LoginDate = value;
-					this.SendPropertyChanged("LoginDate");
-					this.OnLoginDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoutDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> LogoutDate
-		{
-			get
-			{
-				return this._LogoutDate;
-			}
-			set
-			{
-				if ((this._LogoutDate != value))
-				{
-					this.OnLogoutDateChanging(value);
-					this.SendPropertyChanging();
-					this._LogoutDate = value;
-					this.SendPropertyChanged("LogoutDate");
-					this.OnLogoutDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WorkingHours", DbType="Time")]
-		public System.Nullable<System.TimeSpan> WorkingHours
-		{
-			get
-			{
-				return this._WorkingHours;
-			}
-			set
-			{
-				if ((this._WorkingHours != value))
-				{
-					this.OnWorkingHoursChanging(value);
-					this.SendPropertyChanging();
-					this._WorkingHours = value;
-					this.SendPropertyChanged("WorkingHours");
-					this.OnWorkingHoursChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Loginfo", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Loginfos.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Loginfos.Add(this);
 						this._UserID = value.UserID;
 					}
 					else
@@ -777,6 +578,181 @@ namespace LoginPanelApplication
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Loginfo")]
+	public partial class Loginfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _UserID;
+		
+		private System.Nullable<System.DateTime> _LoginDate;
+		
+		private System.Nullable<System.DateTime> _LogoutDate;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnLoginDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnLoginDateChanged();
+    partial void OnLogoutDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnLogoutDateChanged();
+    #endregion
+		
+		public Loginfo()
+		{
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LoginDate
+		{
+			get
+			{
+				return this._LoginDate;
+			}
+			set
+			{
+				if ((this._LoginDate != value))
+				{
+					this.OnLoginDateChanging(value);
+					this.SendPropertyChanging();
+					this._LoginDate = value;
+					this.SendPropertyChanged("LoginDate");
+					this.OnLoginDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogoutDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LogoutDate
+		{
+			get
+			{
+				return this._LogoutDate;
+			}
+			set
+			{
+				if ((this._LogoutDate != value))
+				{
+					this.OnLogoutDateChanging(value);
+					this.SendPropertyChanging();
+					this._LogoutDate = value;
+					this.SendPropertyChanged("LogoutDate");
+					this.OnLogoutDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Loginfo", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Loginfos.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Loginfos.Add(this);
+						this._UserID = value.UserID;
+					}
+					else
+					{
+						this._UserID = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

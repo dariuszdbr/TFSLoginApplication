@@ -18,6 +18,7 @@
         <Grid Grid.Row="1" VerticalAlignment="Center">
             <StackPanel>
                 <Button x:Name="Logout" Margin="10" Click="Logout_Click">Logout</Button>
+                <Button x:Name="btnChecAttendance" Margin="10" Click="btnChecAttendance_Click">Check Attendance</Button>
             </StackPanel>
         </Grid>
 

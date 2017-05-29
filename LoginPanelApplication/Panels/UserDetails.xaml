@@ -5,57 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
         mc:Ignorable="d"
-        Title="User Details" Height="500" Width="700">
+        Title="User Details" Height="500" Width="740" WindowStartupLocation="CenterScreen" Foreground="Black" >
     <Window.Resources>
         <converter:BoolToUserRoleConverter x:Key="BoolToUserRoleConverter" />
         <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
     </Window.Resources>
-    
+   
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-    <StackPanel Margin="10" x:Name="StackPanelDetails">
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Label Width="100">UserId:</Label>
-            <TextBlock Width="150" Text="{Binding Path=UserID, Mode=OneWay}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Label Width="100">Login:</Label>
+        <StackPanel Margin="10" x:Name="StackPanelDetails">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100">UserId:</Label>
+                <TextBlock Width="150" Text="{Binding Path=UserID, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100">Login:</Label>
                 <TextBlock Width="150" Text="{Binding Path=Login, Mode=OneWay}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Label Width="100">Password:</Label>
-            <TextBox Width="150" Text="{Binding Path=Password, Mode=OneWay}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Label Width="100" >Name:</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100">Password:</Label>
+                <TextBox Width="150" Text="{Binding Path=Password, Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100" >Name:</Label>
                 <TextBox Width="150" Text="{Binding Path=Name, Mode=OneWay}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Label Width="100" >Last Name:</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100" >Last Name:</Label>
                 <TextBox Width="150" Text="{Binding Path=LastName, Mode=OneWay}"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <Label Width="100" >Role:</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Width="100" >Role:</Label>
                 <TextBox Width="150" Text="{Binding Path=Role, Mode=OneWay , Converter={StaticResource BoolToUserRoleConverter} }"/>
-        </StackPanel>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100" >Hired on:</Label>
                 <TextBox Width="150" Text="{Binding Path=DateOfEmployment, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100">Status</Label>
-                <ComboBox/>
+                <TextBlock x:Name="txtblok" Text="{Binding Path=Status, Converter={StaticResource BoolToUserStatusConverter}}"/>
+                <Button Margin="10,0,0,0" x:Name="btnBlock" Click="btnBlock_Click">Block the user</Button>
             </StackPanel>
-        <Button x:Name="Back" Click="Back_Click">Back</Button>
+            <Button x:Name="Back" Click="Back_Click">Back</Button>
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <DataGrid x:Name="UserDataGrid">
+        <StackPanel Grid.Column="1" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnDailyRaport" Click="btnDailyRaport_Click" Margin="10" >Daily raport</Button>
+                <Button x:Name ="btnMonthlyRaport" Click="btnMonthlyRaport_Click" Margin="10">Monthly raport</Button>
+            </StackPanel>
+            <DataGrid x:Name="UserDataGrid"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserResizeRows="False"
+                      HorizontalScrollBarVisibility="Disabled"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="130" Header="ID" Binding="{Binding Path=UserID}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
 
+                    <DataGridTextColumn Width="130" Header="Login date" Binding="{Binding Path=LoginDate}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Width="135" Header="Logout date" Binding="{Binding Path=LogoutDate}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+
+                </DataGrid.Columns>
             </DataGrid>
-            
+            <Label x:Name="lblSum" ></Label>
+
         </StackPanel>
     </Grid>
 </Window>

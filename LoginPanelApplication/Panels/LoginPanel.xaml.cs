@@ -29,9 +29,9 @@ namespace LoginPanelApplication.Panels
             //                  select x.User) as User;
 
             
-            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)))
+            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Equals(txtLogin.Text) && user.Password.Equals(txtPassword.Password)))
             {
-                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.Where(user => user.Login.Contains(txtLogin.Text) && user.Password.Contains(txtPassword.Password)).First().User;
+                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.Where(user => user.Login.Equals(txtLogin.Text) && user.Password.Equals(txtPassword.Password)).First().User;
                 
                 if (LinqManager.loggedInUser.Role == true)
                 {
@@ -42,9 +42,9 @@ namespace LoginPanelApplication.Panels
                 }
                 else
                 {
-                    LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null, WorkingHours = null };
+                    LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null };
                     LinqManager.loggedInUser.In = LinqManager.logInfo.LoginDate;
-                    LinqManager.usersDataContext.Loginfos.InsertOnSubmit(LinqManager.logInfo);
+                    LinqManager.loggedInUser.Loginfos.Add(LinqManager.logInfo);   //Loginfos.InsertOnSubmit(LinqManager.logInfo);
                     LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new EmployeePanel());                  // Switch to EmployeePanel
                 }

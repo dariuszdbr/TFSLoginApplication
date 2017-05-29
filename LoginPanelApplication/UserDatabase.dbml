@@ -9,16 +9,6 @@
       <Association Name="User_LoginData" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Loginfo" Member="Loginfos">
-    <Type Name="Loginfo">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LogoutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="WorkingHours" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Association Name="User_Loginfo" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Users" Member="Users">
     <Type Name="User">
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -32,6 +22,15 @@
       <Column Name="Out" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="User_LoginData" Member="LoginDatas" ThisKey="UserID" OtherKey="UserID" Type="LoginData" />
       <Association Name="User_Loginfo" Member="Loginfos" ThisKey="UserID" OtherKey="UserID" Type="Loginfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Loginfo" Member="Loginfos">
+    <Type Name="Loginfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LogoutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_Loginfo" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

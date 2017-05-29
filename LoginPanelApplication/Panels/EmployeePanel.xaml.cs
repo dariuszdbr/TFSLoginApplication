@@ -22,9 +22,8 @@ namespace LoginPanelApplication.Panels
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            LinqManager.logInfo.LogoutDate = DateTime.Now;
-            LinqManager.logInfo.WorkingHours = LinqManager.logInfo.LogoutDate - LinqManager.logInfo.LoginDate;
-            LinqManager.loggedInUser.Out = LinqManager.logInfo.LogoutDate;
+            LinqManager.loggedInUser.Out = DateTime.Now;
+            LinqManager.logInfo.LogoutDate = LinqManager.loggedInUser.Out;
             LinqManager.usersDataContext.SubmitChanges();
 
             PageSwitcher.Navigate(new LoginPanel());
@@ -56,6 +55,13 @@ namespace LoginPanelApplication.Panels
             txtAddNotes.Text = txtBlock.Text;
             txtBlock.Text = "";
             txtAddNotes.Focus();
+        }
+
+        private void btnChecAttendance_Click(object sender, RoutedEventArgs e)
+        {
+            User loggedInUser = LinqManager.loggedInUser;
+            UserDetails details = new UserDetails(loggedInUser);
+            details.ShowDialog();
         }
     }
 }

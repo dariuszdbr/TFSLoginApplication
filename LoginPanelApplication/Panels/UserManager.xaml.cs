@@ -66,8 +66,7 @@ namespace LoginPanelApplication.Panels
                 Loginfo newUserLoginfo = new Loginfo()
                 {
                     LoginDate = null,
-                    LogoutDate = null,
-                    WorkingHours = null
+                    LogoutDate = null
                 };
 
                 newUser.Loginfos.Add(newUserLoginfo);
