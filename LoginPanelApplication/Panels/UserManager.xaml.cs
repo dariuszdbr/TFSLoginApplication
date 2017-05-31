@@ -224,15 +224,24 @@ namespace LoginPanelApplication.Panels
 
         private void DataGridManager_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = DataGridManager.SelectedItem;
+            try
+            {
+                var selectedItem = DataGridManager.SelectedItem;
 
-            var ID = selectedItem.GetType().GetProperty("UserID").GetValue(selectedItem);
-            User user = LinqManager.usersDataContext.Users.Where(x => x.UserID.Equals(ID)).First();
-            LoginData loginData = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(ID)).First();
+                var ID = selectedItem.GetType().GetProperty("UserID").GetValue(selectedItem);
+                User user = LinqManager.usersDataContext.Users.Where(x => x.UserID.Equals(ID)).First();
+                LoginData loginData = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(ID)).First();
 
 
-            UserDetails userdetails = new UserDetails(user);
-            userdetails.ShowDialog();
+                UserDetails userdetails = new UserDetails(user);
+                userdetails.ShowDialog();
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Please select the Employee.");
+            }
+           
 
             //txtName.IsReadOnly = true;
             //    txtLastName.IsReadOnly = true;

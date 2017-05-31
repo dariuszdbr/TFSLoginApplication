@@ -24,24 +24,20 @@ namespace LoginPanelApplication.Panels
         public UserDetails(User user)
         {
             InitializeComponent();
+            SelectedUser(user);
+            LoadData();
+            checkRole();
+        }
+
+        private void SelectedUser(User user)
+        {
             selectedUser = (from x in LinqManager.usersDataContext.Users
                             where x.UserID.Equals(user.UserID)
                             select x).Single();
-            LoadData();
-            checkRole();
-            CalculateHours();
         }
 
         private void LoadData()
         {
-            //LinqManager.usersDataContext = new UserDatabaseDataContext();
-
-            //var LoginInfo = (from x in LinqManager.usersDataContext.Loginfos
-            //                 where x.UserID.Equals(selectedUser.UserID)
-            //                 select x).Skip(1);
-
-            //UserDataGrid.ItemsSource = LoginInfo;
-
             var userDetails = (from a in LinqManager.usersDataContext.Users
                                join b in LinqManager.usersDataContext.LoginDatas on a.UserID equals b.UserID
                                where a.UserID.Equals(selectedUser.UserID)
@@ -68,8 +64,6 @@ namespace LoginPanelApplication.Panels
 
         private void btnBlock_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (btnBlock.Content.Equals("Block the User"))
             {
                 if (MessageBox.Show("Are you sure?", "Change user status", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
@@ -79,69 +73,115 @@ namespace LoginPanelApplication.Panels
 
             LinqManager.usersDataContext.SubmitChanges();
             LoadData();
-        }
-
-        public void CalculateHours()
-        {
-            
+            checkRole();
         }
 
         private void btnDailyRaport_Click(object sender, RoutedEventArgs e)
         {
-            //var listLoginDate = (from x in LinqManager.usersDataContext.Loginfos
-            //                     where x.UserID.Equals(selectedUser.UserID)
-            //                     select x.LoginDate)
-            //                     .Where(y => y.Value.Date == DateTime.Today)
-            //                     .ToList();
-
-            //var listLogoutDate = (from x in LinqManager.usersDataContext.Loginfos
-            //                      where x.UserID.Equals(selectedUser.UserID)
-            //                      select x.LogoutDate)
-            //                      .Where(y => y.Value.Date.Equals(DateTime.Today))
-            //                      .ToList();
+            txtBlockRaport.Text = "";
 
             var dailyRaport = (from x in LinqManager.usersDataContext.Loginfos
                                where x.UserID.Equals(selectedUser.UserID)
                                select x)
-                              .Where(y => y.LoginDate.Value.Date.Equals(DateTime.Today)).ToList();
+                              .Where(y => y.LoginDate.Value.Date.Equals(DateTime.Today))
+                              .ToList();
 
-            UserDataGrid.ItemsSource = dailyRaport;
-
-            var firstLoginOfDay = dailyRaport.First().LoginDate.Value.Date;
-            var lastLogoutOfDay = dailyRaport.Last().LogoutDate.Value.Date;
-
+            // Prepare new daily List
+            var dailyLoginInfo = new List<Loginfo>();
+            if(selectedUser.Role) // if admin
+            dailyLoginInfo.Add(new Loginfo
+            {
+                UserID = dailyRaport.First().UserID,
+                LoginDate = dailyRaport.First().LoginDate,
+                LogoutDate = dailyRaport.Last().LogoutDate
+            });
+            else // if employee
+            {
+                dailyLoginInfo.Add(new Loginfo
+                {
+                    UserID = dailyRaport.First().UserID,
+                    LoginDate = dailyRaport.First().LoginDate,
+                    LogoutDate = DateTime.Now
+                });
+            }
+            
+            // Set Item Source
+            UserDataGrid.ItemsSource = dailyLoginInfo;
+            
+            // Calculate daily raport
             TimeSpan totalDayHours = TimeSpan.Zero;
             try
             {
-                string dateToSplit = lastLogoutOfDay.ToString();
-                string[] split = dateToSplit.Split(' ');
+                var firstLoginOfDay = dailyLoginInfo.First().LoginDate.Value;
+                var lastLogoutOfDay = dailyLoginInfo.First().LogoutDate.Value;
                 totalDayHours = lastLogoutOfDay.Subtract(firstLoginOfDay);
-                Console.WriteLine("Day {0} | Worked hours = {1} hours {2} minutes", split[0], totalDayHours.Hours, totalDayHours.Minutes);
-                lblSum.Content = String.Format("Day {0} | Worked hours = {1} hours {2} minutes", split[0], totalDayHours.Hours, totalDayHours.Minutes);
+                txtBlockRaport.Text+=(String.Format("{0} | Worked hours: {1} hours {2} minutes", lastLogoutOfDay.ToShortDateString(), totalDayHours.Hours, totalDayHours.Minutes) + Environment.NewLine);
             }
             catch (Exception)
             {
                 MessageBox.Show("The employee is absent today");
-            }
-
-            
+            }          
         }
 
         private void btnMonthlyRaport_Click(object sender, RoutedEventArgs e)
         {
+            txtBlockRaport.Text = "";
+
             var monthlyRaport = (from x in LinqManager.usersDataContext.Loginfos
                                  where x.UserID.Equals(selectedUser.UserID)
+                                 orderby x.LoginDate ascending
                                  select x)
-                                 .Where(y => y.LoginDate.Value.Month.Equals(DateTime.Today.Month)).ToList();
+                                 .Where(y => y.LoginDate.Value.Month.Equals(DateTime.Today.Month))
+                                 .ToList();
 
-            foreach (var item in monthlyRaport)
+            // Prepare list for monthly raport
+            List<Loginfo> monthlyLoginRaport = new List<Loginfo>();
+            DateTime lastLogoutOfDay;
+            DateTime firstLoginOfDay;
+
+            // Fill the list with first/last login/logout of day
+            for (int i = 0; i < monthlyRaport.Count(); i++)
             {
-                var firstLoginOfday = item.LoginDate.Value.Date.Day;
-                while()
-                
+                firstLoginOfDay = monthlyRaport.ElementAt(i).LoginDate.Value;
+
+                for (int j = i + 1; j < monthlyRaport.Count(); j++)
+                {
+                    if (j == monthlyRaport.Count() - 1)
+                    {
+                        if (selectedUser.Role)
+                            lastLogoutOfDay = monthlyRaport.ElementAt(j).LogoutDate.Value;
+                        else
+                            lastLogoutOfDay = DateTime.Now;
+                        monthlyLoginRaport.Add(new Loginfo() { UserID = selectedUser.UserID, LoginDate = firstLoginOfDay, LogoutDate = lastLogoutOfDay });
+                        i = j;
+                    }
+
+                    else if (firstLoginOfDay.DayOfYear == monthlyRaport.ElementAt(j).LogoutDate.Value.DayOfYear || monthlyRaport.ElementAt(j).LogoutDate.Value == null)
+                        continue;
+                    
+                    else
+                    {
+                        lastLogoutOfDay = monthlyRaport.ElementAt(j - 1).LogoutDate.Value;
+                        monthlyLoginRaport.Add(new Loginfo() { UserID = selectedUser.UserID, LoginDate = firstLoginOfDay, LogoutDate = lastLogoutOfDay });                        
+                        i = j-1;
+                        break;
+                    } 
+                }                
             }
 
-            UserDataGrid.ItemsSource = monthlyRaport;
+            // Set Item Source
+            UserDataGrid.ItemsSource = monthlyLoginRaport;
+
+            // Calculate and display monthly raport in read only RichTextBox 
+            TimeSpan totalDayHours = TimeSpan.Zero;
+            int counter = 0;
+            foreach (var item in monthlyLoginRaport)
+            {
+                totalDayHours = item.LogoutDate.Value - item.LoginDate.Value;
+                txtBlockRaport.Text +=(String.Format("{0} | Worked hours: {1} hours {2} minutes", item.LoginDate.Value.Date.ToShortDateString(), totalDayHours.Hours, totalDayHours.Minutes) + Environment.NewLine);
+            }
+           
         }
     }
 }
+            

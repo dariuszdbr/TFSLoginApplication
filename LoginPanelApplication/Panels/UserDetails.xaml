@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
         mc:Ignorable="d"
-        Title="User Details" Height="500" Width="740" WindowStartupLocation="CenterScreen" Foreground="Black" >
+        Title="User Details" Height="600" Width="900" WindowStartupLocation="CenterScreen" Foreground="Black" >
     <Window.Resources>
         <converter:BoolToUserRoleConverter x:Key="BoolToUserRoleConverter" />
         <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
@@ -14,8 +14,9 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="10" x:Name="StackPanelDetails">
             <StackPanel Orientation="Horizontal" Margin="10">
@@ -53,12 +54,16 @@
             </StackPanel>
             <Button x:Name="Back" Click="Back_Click">Back</Button>
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="10">
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Rectangle Height="auto" Width="2"  Fill="Gray"></Rectangle>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="2" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btnDailyRaport" Click="btnDailyRaport_Click" Margin="10" >Daily raport</Button>
                 <Button x:Name ="btnMonthlyRaport" Click="btnMonthlyRaport_Click" Margin="10">Monthly raport</Button>
             </StackPanel>
-            <DataGrid x:Name="UserDataGrid"
+            
+                <DataGrid x:Name="UserDataGrid"
                       AutoGenerateColumns="False"
                       CanUserAddRows="False"
                       CanUserDeleteRows="False"
@@ -66,38 +71,37 @@
                       CanUserResizeRows="False"
                       HorizontalScrollBarVisibility="Disabled"
                       >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Width="130" Header="ID" Binding="{Binding Path=UserID}">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
-                    </DataGridTextColumn>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="130" Header="ID" Binding="{Binding Path=UserID}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
 
-                    <DataGridTextColumn Width="130" Header="Login date" Binding="{Binding Path=LoginDate}">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
-                    </DataGridTextColumn>
+                        <DataGridTextColumn Width="130" Header="Login date" Binding="{Binding Path=LoginDate}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
 
-                    <DataGridTextColumn Width="135" Header="Logout date" Binding="{Binding Path=LogoutDate}">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
-                    </DataGridTextColumn>
-
-                </DataGrid.Columns>
-            </DataGrid>
-            <Label x:Name="lblSum" ></Label>
-
+                        <DataGridTextColumn Width="135" Header="Logout date" Binding="{Binding Path=LogoutDate}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock x:Name="txtBlockRaport" ></TextBlock>
+            
         </StackPanel>
     </Grid>
 </Window>
