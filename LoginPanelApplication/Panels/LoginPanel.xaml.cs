@@ -23,35 +23,47 @@ namespace LoginPanelApplication.Panels
 
         private void Login()
         {
-
-            //var loggedUser = (from x in LinqManager.usersDataContext.LoginDatas
-            //                  where x.Login.Equals(txtLogin) && x.Password.Equals(txtPassword)
-            //                  select x.User) as User;
-
-            
-            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Equals(txtLogin.Text) && user.Password.Equals(txtPassword.Password)))
+            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Equals(txtLogin.Text)))
             {
-                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.Where(user => user.Login.Equals(txtLogin.Text) && user.Password.Equals(txtPassword.Password)).First().User;
-                
-                if (LinqManager.loggedInUser.Role == true)
+                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.Where(user => user.Login.Equals(txtLogin.Text)).First().User;
+
+                if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(txtPassword.Password)) && LinqManager.loggedInUser.Role)
                 {
-                    //LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null, WorkingHours = null };
-                    //LinqManager.usersDataContext.Loginfos.InsertOnSubmit(LinqManager.logInfo);
-                    //LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new AdminPanel());                     // Switch to AdminPanel
                 }
-                else
+                else if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(txtPassword.Password)) && !LinqManager.loggedInUser.Role && LinqManager.loggedInUser.Status)
                 {
                     LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null };
                     LinqManager.loggedInUser.In = LinqManager.logInfo.LoginDate;
-                    LinqManager.loggedInUser.Loginfos.Add(LinqManager.logInfo);   //Loginfos.InsertOnSubmit(LinqManager.logInfo);
+                    LinqManager.loggedInUser.Loginfos.Add(LinqManager.logInfo);
+                    LinqManager.loggedInUser.FailedLoginCount = 0;
                     LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new EmployeePanel());                  // Switch to EmployeePanel
+                }
+
+                else if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(txtPassword.Password)) && !LinqManager.loggedInUser.Role && !LinqManager.loggedInUser.Status)
+                {
+                    MessageBox.Show("Your Account has been blocked, please contact with the admin", "Account status", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                else
+                {
+                    MessageBox.Show("Please enter a valid login or password", "Inncorrect Login or Password", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    if (!LinqManager.loggedInUser.Role)
+                    {
+                        LinqManager.loggedInUser.FailedLoginCount++;
+                        if (LinqManager.loggedInUser.FailedLoginCount == 3)
+                        {
+                            LinqManager.loggedInUser.Status = false;
+                            MessageBox.Show("Your Account has been blocked due to providing inncorect password, please contact with the admin", "Account status", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        LinqManager.usersDataContext.SubmitChanges();
+                    }
                 }
             }
             else
             {
-                if (MessageBox.Show("Please enter a valid login and password", "Inncorrect Login or Password", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                if (MessageBox.Show("Please enter a valid login or password", "Inncorrect Login or Password", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
                 {
                     txtLogin.Focus();
                     txtLogin.Clear();

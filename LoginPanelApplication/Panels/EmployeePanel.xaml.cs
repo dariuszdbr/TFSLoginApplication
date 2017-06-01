@@ -18,6 +18,13 @@ namespace LoginPanelApplication.Panels
  
             SetLabelContent();
             txtBlock.Text = "Done Tasks:\n\n1.\n\n2.\n\n3.\n\n4.\n\n5.";
+            hasToChangePassword();
+        }
+
+        private void hasToChangePassword()
+        {
+            ChangePassword setNew = new ChangePassword();
+            setNew.ShowDialog();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

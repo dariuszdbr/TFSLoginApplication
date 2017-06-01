@@ -250,3 +250,5 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\o
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\ChangePassword.g.cs
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\ChangePassword.baml
