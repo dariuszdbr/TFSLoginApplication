@@ -23,6 +23,7 @@ namespace LoginPanelApplication.Panels
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             LinqManager.loggedInUser.Out = DateTime.Now;
+            LinqManager.logInfo.Hours = LinqManager.loggedInUser.Out - LinqManager.loggedInUser.In;
             LinqManager.logInfo.LogoutDate = LinqManager.loggedInUser.Out;
             LinqManager.usersDataContext.SubmitChanges();
 

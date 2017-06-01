@@ -10,6 +10,7 @@
         <converter:BoolToUserRoleConverter x:Key="BoolToUserRoleConverter" />
         <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
         <converter:DateTimeConverter x:Key="DateTimeConverter"/>
+        <converter:TimeSpanConverter x:Key="TimeSpanConverter"/>
     </Window.Resources>
    
 
@@ -74,19 +75,17 @@
                       HorizontalScrollBarVisibility="Disabled"
                       >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="130" Header="ID" Binding="{Binding Path=UserID}">
+                        <DataGridTextColumn Width="100" Header="User Id" Binding="{Binding Path=UserID}">
                             <DataGridTextColumn.HeaderStyle>
-                                <Style TargetType="DataGridColumnHeader">
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                    <Setter Property="FontWeight" Value="Bold"/>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontWeight" Value="Bold"/>
                                 </Style>
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn Width="130" Header="Date" Binding="{Binding Path=LoginDate, Converter={StaticResource DateTimeConverter}}">
+                        <DataGridTextColumn Width="200" Header="Date" Binding="{Binding Path=LoginDate, Converter={StaticResource DateTimeConverter}}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
@@ -101,10 +100,9 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 -->
-                    <DataGridTextColumn Width="135" Header="Hours" Binding="{Binding Path=Hours}">
+                    <DataGridTextColumn Width="200" Header="Hours" Binding="{Binding Path=Hours, Converter={StaticResource TimeSpanConverter}}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
                             </Style>
                         </DataGridTextColumn.HeaderStyle>

@@ -33,12 +33,12 @@ namespace LoginPanelApplication
     partial void InsertLoginData(LoginData instance);
     partial void UpdateLoginData(LoginData instance);
     partial void DeleteLoginData(LoginData instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertLoginfo(Loginfo instance);
     partial void UpdateLoginfo(Loginfo instance);
     partial void DeleteLoginfo(Loginfo instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     #endregion
 		
 		public UserDatabaseDataContext() : 
@@ -79,19 +79,19 @@ namespace LoginPanelApplication
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Loginfo> Loginfos
 		{
 			get
 			{
 				return this.GetTable<Loginfo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 	}
@@ -268,316 +268,6 @@ namespace LoginPanelApplication
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserID;
-		
-		private string _Name;
-		
-		private string _LastName;
-		
-		private bool _Role;
-		
-		private bool _Status;
-		
-		private bool _ChangePassword;
-		
-		private System.Nullable<System.DateTime> _DateOfEmployment;
-		
-		private System.Nullable<System.DateTime> _In;
-		
-		private System.Nullable<System.DateTime> _Out;
-		
-		private EntitySet<LoginData> _LoginDatas;
-		
-		private EntitySet<Loginfo> _Loginfos;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnRoleChanging(bool value);
-    partial void OnRoleChanged();
-    partial void OnStatusChanging(bool value);
-    partial void OnStatusChanged();
-    partial void OnChangePasswordChanging(bool value);
-    partial void OnChangePasswordChanged();
-    partial void OnDateOfEmploymentChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateOfEmploymentChanged();
-    partial void OnInChanging(System.Nullable<System.DateTime> value);
-    partial void OnInChanged();
-    partial void OnOutChanging(System.Nullable<System.DateTime> value);
-    partial void OnOutChanged();
-    #endregion
-		
-		public User()
-		{
-			this._LoginDatas = new EntitySet<LoginData>(new Action<LoginData>(this.attach_LoginDatas), new Action<LoginData>(this.detach_LoginDatas));
-			this._Loginfos = new EntitySet<Loginfo>(new Action<Loginfo>(this.attach_Loginfos), new Action<Loginfo>(this.detach_Loginfos));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50)")]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Role", DbType="Bit NOT NULL")]
-		public bool Role
-		{
-			get
-			{
-				return this._Role;
-			}
-			set
-			{
-				if ((this._Role != value))
-				{
-					this.OnRoleChanging(value);
-					this.SendPropertyChanging();
-					this._Role = value;
-					this.SendPropertyChanged("Role");
-					this.OnRoleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit NOT NULL")]
-		public bool Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangePassword", DbType="Bit NOT NULL")]
-		public bool ChangePassword
-		{
-			get
-			{
-				return this._ChangePassword;
-			}
-			set
-			{
-				if ((this._ChangePassword != value))
-				{
-					this.OnChangePasswordChanging(value);
-					this.SendPropertyChanging();
-					this._ChangePassword = value;
-					this.SendPropertyChanged("ChangePassword");
-					this.OnChangePasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOfEmployment", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateOfEmployment
-		{
-			get
-			{
-				return this._DateOfEmployment;
-			}
-			set
-			{
-				if ((this._DateOfEmployment != value))
-				{
-					this.OnDateOfEmploymentChanging(value);
-					this.SendPropertyChanging();
-					this._DateOfEmployment = value;
-					this.SendPropertyChanged("DateOfEmployment");
-					this.OnDateOfEmploymentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[In]", Storage="_In", DbType="DateTime")]
-		public System.Nullable<System.DateTime> In
-		{
-			get
-			{
-				return this._In;
-			}
-			set
-			{
-				if ((this._In != value))
-				{
-					this.OnInChanging(value);
-					this.SendPropertyChanging();
-					this._In = value;
-					this.SendPropertyChanged("In");
-					this.OnInChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Out", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Out
-		{
-			get
-			{
-				return this._Out;
-			}
-			set
-			{
-				if ((this._Out != value))
-				{
-					this.OnOutChanging(value);
-					this.SendPropertyChanging();
-					this._Out = value;
-					this.SendPropertyChanged("Out");
-					this.OnOutChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LoginData", Storage="_LoginDatas", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<LoginData> LoginDatas
-		{
-			get
-			{
-				return this._LoginDatas;
-			}
-			set
-			{
-				this._LoginDatas.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Loginfo", Storage="_Loginfos", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<Loginfo> Loginfos
-		{
-			get
-			{
-				return this._Loginfos;
-			}
-			set
-			{
-				this._Loginfos.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_LoginDatas(LoginData entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_LoginDatas(LoginData entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_Loginfos(Loginfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Loginfos(Loginfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
 		}
 	}
 	
@@ -777,6 +467,340 @@ namespace LoginPanelApplication
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private string _Name;
+		
+		private string _LastName;
+		
+		private bool _Role;
+		
+		private bool _Status;
+		
+		private bool _ChangePassword;
+		
+		private System.Nullable<System.DateTime> _DateOfEmployment;
+		
+		private System.Nullable<System.DateTime> _In;
+		
+		private System.Nullable<System.DateTime> _Out;
+		
+		private System.Nullable<int> _FailedLoginCount;
+		
+		private EntitySet<LoginData> _LoginDatas;
+		
+		private EntitySet<Loginfo> _Loginfos;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnRoleChanging(bool value);
+    partial void OnRoleChanged();
+    partial void OnStatusChanging(bool value);
+    partial void OnStatusChanged();
+    partial void OnChangePasswordChanging(bool value);
+    partial void OnChangePasswordChanged();
+    partial void OnDateOfEmploymentChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateOfEmploymentChanged();
+    partial void OnInChanging(System.Nullable<System.DateTime> value);
+    partial void OnInChanged();
+    partial void OnOutChanging(System.Nullable<System.DateTime> value);
+    partial void OnOutChanged();
+    partial void OnFailedLoginCountChanging(System.Nullable<int> value);
+    partial void OnFailedLoginCountChanged();
+    #endregion
+		
+		public User()
+		{
+			this._LoginDatas = new EntitySet<LoginData>(new Action<LoginData>(this.attach_LoginDatas), new Action<LoginData>(this.detach_LoginDatas));
+			this._Loginfos = new EntitySet<Loginfo>(new Action<Loginfo>(this.attach_Loginfos), new Action<Loginfo>(this.detach_Loginfos));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Role", DbType="Bit NOT NULL")]
+		public bool Role
+		{
+			get
+			{
+				return this._Role;
+			}
+			set
+			{
+				if ((this._Role != value))
+				{
+					this.OnRoleChanging(value);
+					this.SendPropertyChanging();
+					this._Role = value;
+					this.SendPropertyChanged("Role");
+					this.OnRoleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit NOT NULL")]
+		public bool Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChangePassword", DbType="Bit NOT NULL")]
+		public bool ChangePassword
+		{
+			get
+			{
+				return this._ChangePassword;
+			}
+			set
+			{
+				if ((this._ChangePassword != value))
+				{
+					this.OnChangePasswordChanging(value);
+					this.SendPropertyChanging();
+					this._ChangePassword = value;
+					this.SendPropertyChanged("ChangePassword");
+					this.OnChangePasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOfEmployment", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateOfEmployment
+		{
+			get
+			{
+				return this._DateOfEmployment;
+			}
+			set
+			{
+				if ((this._DateOfEmployment != value))
+				{
+					this.OnDateOfEmploymentChanging(value);
+					this.SendPropertyChanging();
+					this._DateOfEmployment = value;
+					this.SendPropertyChanged("DateOfEmployment");
+					this.OnDateOfEmploymentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[In]", Storage="_In", DbType="DateTime")]
+		public System.Nullable<System.DateTime> In
+		{
+			get
+			{
+				return this._In;
+			}
+			set
+			{
+				if ((this._In != value))
+				{
+					this.OnInChanging(value);
+					this.SendPropertyChanging();
+					this._In = value;
+					this.SendPropertyChanged("In");
+					this.OnInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Out", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Out
+		{
+			get
+			{
+				return this._Out;
+			}
+			set
+			{
+				if ((this._Out != value))
+				{
+					this.OnOutChanging(value);
+					this.SendPropertyChanging();
+					this._Out = value;
+					this.SendPropertyChanged("Out");
+					this.OnOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FailedLoginCount", DbType="Int")]
+		public System.Nullable<int> FailedLoginCount
+		{
+			get
+			{
+				return this._FailedLoginCount;
+			}
+			set
+			{
+				if ((this._FailedLoginCount != value))
+				{
+					this.OnFailedLoginCountChanging(value);
+					this.SendPropertyChanging();
+					this._FailedLoginCount = value;
+					this.SendPropertyChanged("FailedLoginCount");
+					this.OnFailedLoginCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LoginData", Storage="_LoginDatas", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<LoginData> LoginDatas
+		{
+			get
+			{
+				return this._LoginDatas;
+			}
+			set
+			{
+				this._LoginDatas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Loginfo", Storage="_Loginfos", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<Loginfo> Loginfos
+		{
+			get
+			{
+				return this._Loginfos;
+			}
+			set
+			{
+				this._Loginfos.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_LoginDatas(LoginData entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_LoginDatas(LoginData entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_Loginfos(Loginfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Loginfos(Loginfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
 		}
 	}
 }

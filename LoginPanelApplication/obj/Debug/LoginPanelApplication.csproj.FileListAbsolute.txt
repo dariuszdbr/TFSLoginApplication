@@ -249,3 +249,4 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\o
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache

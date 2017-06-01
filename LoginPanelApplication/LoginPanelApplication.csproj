@@ -73,6 +73,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToUserStatusConverter.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\TimeSpanConverter.cs" />
     <Compile Include="Panels\UserDetails.xaml.cs">
       <DependentUpon>UserDetails.xaml</DependentUpon>
     </Compile>
