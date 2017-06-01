@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\
 LoginPanelApplication
 none
 false
 DEBUG;TRACE
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\App.xaml
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\App.xaml
 7271676924
 2-1967108156
-16-182704832
+17-254883
 15-169929413
 MainWindow.xaml;Panels\AdminPanel.xaml;Panels\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\PasswordRecoveryPanel.xaml;Panels\UserDetails.xaml;Panels\UserManager.xaml;
 

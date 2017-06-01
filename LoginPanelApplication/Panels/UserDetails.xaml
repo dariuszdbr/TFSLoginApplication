@@ -9,12 +9,13 @@
     <Window.Resources>
         <converter:BoolToUserRoleConverter x:Key="BoolToUserRoleConverter" />
         <converter:BoolToUserStatusConverter x:Key="BoolToUserStatusConverter" />
+        <converter:DateTimeConverter x:Key="DateTimeConverter"/>
     </Window.Resources>
    
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
@@ -29,23 +30,24 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100">Password:</Label>
-                <TextBox Width="150" Text="{Binding Path=Password, Mode=OneWay}"/>
+                <TextBox IsReadOnly="True" x:Name="txtPassword" Width="150" Text="{Binding Path=Password, Mode=OneWay}"/>
+                <Button x:Name="btnChangePassword" Click="btnChangePassword_Click">Change</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100" >Name:</Label>
-                <TextBox Width="150" Text="{Binding Path=Name, Mode=OneWay}"/>
+                <TextBlock Width="150" Text="{Binding Path=Name, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100" >Last Name:</Label>
-                <TextBox Width="150" Text="{Binding Path=LastName, Mode=OneWay}"/>
+                <TextBlock Width="150" Text="{Binding Path=LastName, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100" >Role:</Label>
-                <TextBox Width="150" Text="{Binding Path=Role, Mode=OneWay , Converter={StaticResource BoolToUserRoleConverter} }"/>
+                <TextBlock Width="150" Text="{Binding Path=Role, Mode=OneWay , Converter={StaticResource BoolToUserRoleConverter} }"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100" >Hired on:</Label>
-                <TextBox Width="150" Text="{Binding Path=DateOfEmployment, Mode=OneWay}"/>
+                <TextBlock Width="150" Text="{Binding Path=DateOfEmployment, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Width="100">Status</Label>
@@ -81,15 +83,15 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn Width="130" Header="Login date" Binding="{Binding Path=LoginDate}">
-                            <DataGridTextColumn.HeaderStyle>
-                                <Style TargetType="DataGridColumnHeader">
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                    <Setter Property="FontWeight" Value="Bold"/>
-                                </Style>
-                            </DataGridTextColumn.HeaderStyle>
-                        </DataGridTextColumn>
-
+                        <DataGridTextColumn Width="130" Header="Date" Binding="{Binding Path=LoginDate, Converter={StaticResource DateTimeConverter}}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+<!--
                         <DataGridTextColumn Width="135" Header="Logout date" Binding="{Binding Path=LogoutDate}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
@@ -98,7 +100,17 @@
                                 </Style>
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
-                    </DataGrid.Columns>
+-->
+                    <DataGridTextColumn Width="135" Header="Hours" Binding="{Binding Path=Hours}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+
+                </DataGrid.Columns>
                 </DataGrid>
                 <TextBlock x:Name="txtBlockRaport" ></TextBlock>
             

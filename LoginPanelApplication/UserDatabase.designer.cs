@@ -595,6 +595,8 @@ namespace LoginPanelApplication
 		
 		private System.Nullable<System.DateTime> _LogoutDate;
 		
+		private System.Nullable<System.TimeSpan> _Hours;
+		
 		private EntityRef<User> _User;
 		
     #region Extensibility Method Definitions
@@ -609,6 +611,8 @@ namespace LoginPanelApplication
     partial void OnLoginDateChanged();
     partial void OnLogoutDateChanging(System.Nullable<System.DateTime> value);
     partial void OnLogoutDateChanged();
+    partial void OnHoursChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnHoursChanged();
     #endregion
 		
 		public Loginfo()
@@ -697,6 +701,26 @@ namespace LoginPanelApplication
 					this._LogoutDate = value;
 					this.SendPropertyChanged("LogoutDate");
 					this.OnLogoutDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hours", DbType="Time")]
+		public System.Nullable<System.TimeSpan> Hours
+		{
+			get
+			{
+				return this._Hours;
+			}
+			set
+			{
+				if ((this._Hours != value))
+				{
+					this.OnHoursChanging(value);
+					this.SendPropertyChanging();
+					this._Hours = value;
+					this.SendPropertyChanged("Hours");
+					this.OnHoursChanged();
 				}
 			}
 		}

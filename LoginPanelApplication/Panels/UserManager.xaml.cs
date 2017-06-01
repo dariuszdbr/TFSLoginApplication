@@ -76,7 +76,6 @@ namespace LoginPanelApplication.Panels
                 try
                 {
                     LinqManager.usersDataContext.SubmitChanges();
-                    LinqManager.usersDataContext.Log = Console.Out;
                 }
                 catch (Exception ex)
                 {
@@ -90,24 +89,24 @@ namespace LoginPanelApplication.Panels
 
         public bool IsPasswordCorrect(string password)
         {
-            byte IsOneUppercaseLetter = 0;
-            byte IsOneDigit = 0;
-            byte isOneLowercaseLetter = 0;
+            bool IsOneUppercaseLetter = false;
+            bool IsOneDigit = false;
+            bool isOneLowercaseLetter = false;
 
             for (int i = 0; i < password.Length; i++)
             {
                 if (password[i] >= 65 && password[i] <= 90)
-                    IsOneUppercaseLetter++;
+                    IsOneUppercaseLetter = true;
 
                 if (password[i] >= 40 && password[i] <= 57)
-                    IsOneDigit++;
+                    IsOneDigit = true;
 
                 if (password[i] >= 99 && password[i] <= 122)
-                    isOneLowercaseLetter++;
+                    isOneLowercaseLetter = true;
 
-                if (IsOneDigit > 0 && IsOneUppercaseLetter > 0 && isOneLowercaseLetter > 0) return true;
+                if (IsOneDigit  && IsOneUppercaseLetter  && isOneLowercaseLetter ) return true;
             }
-            return (IsOneUppercaseLetter > 0 && IsOneDigit > 0 && isOneLowercaseLetter > 0);
+            return (IsOneUppercaseLetter  && IsOneDigit  && isOneLowercaseLetter );
         }
 
         private string GenerateLogin(string userName, string lastName)
@@ -121,9 +120,9 @@ namespace LoginPanelApplication.Panels
 
                 LinqManager.usersDataContext = new UserDatabaseDataContext();
 
-                var checkUsers = (LinqManager.usersDataContext.LoginDatas.Where( user => user.Login == login ));
+                var checkUsers = (LinqManager.usersDataContext.LoginDatas.Any( user => user.Login == login ));
 
-                if (checkUsers.Count() > 0)
+                if (checkUsers)
                 {
                     number++;
                 }

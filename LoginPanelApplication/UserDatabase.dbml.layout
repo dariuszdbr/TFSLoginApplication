@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.125, 8.5" name="UserDatabase">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="UserDatabase">
   <DataContextMoniker Name="/UserDatabaseDataContext" />
   <nestedChildShapes>
     <classShape Id="23b922b3-f008-4552-85de-2666f2ee99b0" absoluteBounds="0.5, 2.625, 2, 1.5785953776041666">
@@ -21,17 +21,17 @@
         <classShapeMoniker Id="23b922b3-f008-4552-85de-2666f2ee99b0" />
       </nodes>
     </associationConnector>
-    <classShape Id="2f900edd-ccd3-4377-ae18-426f9b79b4c0" absoluteBounds="8.875, 2, 2, 1.5785953776041666">
+    <classShape Id="343fd8ce-52ad-4c3b-999a-4bf5c88cd169" absoluteBounds="9, 2.125, 2, 1.7708968098958331">
       <DataClassMoniker Name="/UserDatabaseDataContext/Loginfo" />
       <nestedChildShapes>
-        <elementListCompartment Id="59a76019-d0df-4d71-adf1-35b428dbec8c" absoluteBounds="8.89, 2.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="11c38cf6-d2ce-4105-9825-1ecb10188848" absoluteBounds="9.015, 2.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.875 : 2.77005126953125); (8.875 : 2.77005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.875 : 2.83255126953125); (9 : 2.83255126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UserDatabaseDataContext/User/User_Loginfo" />
       <nodes>
         <classShapeMoniker Id="7ff03380-485e-4b41-b420-d73f936ddfc8" />
-        <classShapeMoniker Id="2f900edd-ccd3-4377-ae18-426f9b79b4c0" />
+        <classShapeMoniker Id="343fd8ce-52ad-4c3b-999a-4bf5c88cd169" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

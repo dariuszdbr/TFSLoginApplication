@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SqlUserDatabase" Class="UserDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SqlUserDatabase.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="LoginPanelApplication.Properties.Settings" SettingsPropertyName="SqlUserDatabaseConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SqlUserDatabase.mdf;Integrated Security=True" SettingsObjectName="LoginPanelApplication.Properties.Settings" SettingsPropertyName="SqlUserDatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Login" Member="LoginDatas">
     <Type Name="LoginData">
       <Column Name="LoginId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -30,6 +30,7 @@
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="LoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="LogoutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Hours" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Association Name="User_Loginfo" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
