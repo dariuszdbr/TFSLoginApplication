@@ -42,7 +42,7 @@ namespace LoginApplicationTests
             MainWindow Window = new MainWindow();
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "ddąbrowski";
-            loginPanel.TestTxtPassword.Password = "darek123";
+            loginPanel.TestTxtPassword.Password = "Darek123";
             loginPanel.GetSqlLoginForTest();
 
             var expected = 2; // employee Id

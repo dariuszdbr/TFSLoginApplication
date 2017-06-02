@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\App.xaml
-8-453910982
+9-400089556
 2-1967108156
-19-721313375
+21-1700656004
 15-169929413
-MainWindow.xaml;Panels\AdminPanel.xaml;Panels\ChangePassword.xaml;Panels\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\PasswordRecoveryPanel.xaml;Panels\UserDetails.xaml;Panels\UserManager.xaml;
+MainWindow.xaml;Panels\Admin\AddUser.xaml;Panels\Admin\AdminPanel.xaml;Panels\Employee\ChangePassword.xaml;Panels\Employee\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\PasswordRecoveryPanel.xaml;Panels\Admin\UserDetails.xaml;Panels\Admin\UserManager.xaml;
 
 False
 

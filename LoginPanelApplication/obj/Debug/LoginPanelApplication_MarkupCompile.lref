@@ -1,11 +1,12 @@
 ﻿
 
 FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\MainWindow.xaml;;
-FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\AdminPanel.xaml;;
-FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\ChangePassword.xaml;;
-FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\EmployeePanel.xaml;;
+FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\Admin\AddUser.xaml;;
+FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\Admin\AdminPanel.xaml;;
+FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\Employee\ChangePassword.xaml;;
+FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\Employee\EmployeePanel.xaml;;
 FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\LoginPanel.xaml;;
 FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\PasswordRecoveryPanel.xaml;;
-FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\UserDetails.xaml;;
-FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\UserManager.xaml;;
+FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\Admin\UserDetails.xaml;;
+FC:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\Panels\Admin\UserManager.xaml;;
 

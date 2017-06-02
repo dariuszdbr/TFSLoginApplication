@@ -74,12 +74,16 @@
     <Compile Include="Converters\BoolToUserStatusConverter.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Converters\TimeSpanConverter.cs" />
-    <Compile Include="Panels\ChangePassword.xaml.cs">
+    <Compile Include="Panels\Admin\AddUser.xaml.cs">
+      <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Employee\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Panels\UserDetails.xaml.cs">
+    <Compile Include="Panels\Admin\UserDetails.xaml.cs">
       <DependentUpon>UserDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Password.cs" />
     <Compile Include="UserDatabase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,15 +103,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Panels\AdminPanel.xaml">
+    <Page Include="Panels\Admin\AddUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panels\ChangePassword.xaml">
+    <Page Include="Panels\Admin\AdminPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panels\EmployeePanel.xaml">
+    <Page Include="Panels\Employee\ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\Employee\EmployeePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,21 +127,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panels\UserDetails.xaml">
+    <Page Include="Panels\Admin\UserDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panels\UserManager.xaml">
+    <Page Include="Panels\Admin\UserManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageSwitcher.cs" />
-    <Compile Include="Panels\AdminPanel.xaml.cs">
+    <Compile Include="Panels\Admin\AdminPanel.xaml.cs">
       <DependentUpon>AdminPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Panels\EmployeePanel.xaml.cs">
+    <Compile Include="Panels\Employee\EmployeePanel.xaml.cs">
       <DependentUpon>EmployeePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panels\LoginPanel.xaml.cs">
@@ -142,7 +150,7 @@
     <Compile Include="Panels\PasswordRecoveryPanel.xaml.cs">
       <DependentUpon>PasswordRecoveryPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Panels\UserManager.xaml.cs">
+    <Compile Include="Panels\Admin\UserManager.xaml.cs">
       <DependentUpon>UserManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
