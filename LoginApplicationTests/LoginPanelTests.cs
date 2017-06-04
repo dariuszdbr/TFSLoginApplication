@@ -48,11 +48,11 @@ namespace LoginApplicationTests
             loginPanel.TestTxtPassword.Password = "Admin";
             loginPanel.Login();
 
-            var expected = LinqManager.usersDataContext.LoginDatas
-                .Any(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password));
+            var expected = false;
 
             //-- Act 
-            var actual = false;
+            var actual = LinqManager.usersDataContext.LoginDatas
+                .Any(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password));
 
             //-- Assert
             Assert.AreEqual(expected, actual);
@@ -96,10 +96,11 @@ namespace LoginApplicationTests
             loginPanel.TestTxtPassword.Password = "darek123";
             loginPanel.Login();
 
-            var expected = LinqManager.usersDataContext.LoginDatas
-                .Any(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password));
+            var expected = false;
+
             //-- Act 
-            var actual = false;
+            var actual = LinqManager.usersDataContext.LoginDatas
+                .Any(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password));
 
             //-- Assert
             Assert.AreEqual(expected, actual);
