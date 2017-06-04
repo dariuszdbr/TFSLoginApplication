@@ -74,7 +74,7 @@
             </Grid.ColumnDefinitions>
 
             <Label VerticalAlignment="Center" Content="User Name:" FontWeight="Bold" Margin="0,17" />
-            <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="txtLogin" Margin="5,19"/>
+            <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="txtLogin" Margin="5,19" />
             <Label Grid.Row="1" Content="Password:"  FontWeight="Bold" HorizontalAlignment="left" VerticalAlignment="Top"/>
             <PasswordBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  x:Name="txtPassword" Margin="5,5,5,0"/>
             <Label Grid.Row="1" Grid.Column="1"  

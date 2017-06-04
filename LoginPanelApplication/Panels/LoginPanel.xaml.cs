@@ -21,7 +21,7 @@ namespace LoginPanelApplication.Panels
             InitializeComponent();
         }
 
-        private void Login()
+        public void Login()
         {
             if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Equals(txtLogin.Text)))
             {
