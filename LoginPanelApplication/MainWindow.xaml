@@ -1,12 +1,13 @@
-﻿<Window x:Class="LoginPanelApplication.MainWindow"
+﻿<Controls:MetroWindow x:Class="LoginPanelApplication.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginPanelApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="GhostWhite"  >
+        Title="Employee Management System" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="GhostWhite"  >
     <Grid>
         
     </Grid>
-</Window>
+</Controls:MetroWindow>

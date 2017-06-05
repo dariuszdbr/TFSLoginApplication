@@ -254,3 +254,8 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\o
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Employee\EmployeePanel.baml
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\UserDetails.baml
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\UserManager.baml
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.dll
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.pdb
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.xml
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\App.baml

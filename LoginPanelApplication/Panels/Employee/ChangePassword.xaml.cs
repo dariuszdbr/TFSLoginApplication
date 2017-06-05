@@ -17,7 +17,7 @@ namespace LoginPanelApplication.Panels
     /// <summary>
     /// Interaction logic for ChangePassword.xaml
     /// </summary>
-    public partial class ChangePassword : Window
+    public partial class ChangePassword
     {
         public ChangePassword()
         {

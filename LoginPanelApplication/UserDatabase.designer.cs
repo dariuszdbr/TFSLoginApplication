@@ -42,7 +42,7 @@ namespace LoginPanelApplication
     #endregion
 		
 		public UserDatabaseDataContext() : 
-				base(global::LoginPanelApplication.Properties.Settings.Default.SqlUserDatabaseConnectionString1, mappingSource)
+				base(global::LoginPanelApplication.Properties.Settings.Default.SqlUserDatabaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

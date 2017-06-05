@@ -17,7 +17,7 @@ namespace LoginPanelApplication.Panels
     /// <summary>
     /// Interaction logic for UserDetails.xaml
     /// </summary>
-    public partial class UserDetails : Window
+    public partial class UserDetails 
     {
         User selectedUser;
         bool changePassword = false;
