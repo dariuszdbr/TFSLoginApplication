@@ -24,14 +24,17 @@ namespace LoginPanelApplication.Panels
         private void btnFindPassword_Click(object sender, RoutedEventArgs e)
         {
 
-            //var person =( from user in LinqManager.usersDataContext.Users
-            //              where user.Login == txtUserLogin.Text && user.Name == txtName.Text && user.LastName == txtLastName.Text
-            //              select user );
-            var findPerson = LinqManager.usersDataContext.Users.Where( p => p.Name == txtName.Text && p.LastName == txtLastName.Text /*&& p.Login == txtUserLogin.Text */);
+            var person = (from user in LinqManager.usersDataContext.Users
+                          where user.Name == txtName.Text && user.LastName == txtLastName.Text && user.LoginDatas.First().Login.Equals(txtUserLogin.Text)
+                          select new { UserID = user.UserID, Name = user.Name, LastName = user.LastName,Login = user.LoginDatas.First().Login  , Password = user.LoginDatas.First().Password });
+            //var findPerson = LinqManager.usersDataContext.Users.Where( p => p.Name == txtName.Text && p.LastName == txtLastName.Text /*&& p.Login == txtUserLogin.Text */)
+            //    .First()
+            //    .LoginDatas.Where(x => x.Login.Equals(txtUserLogin))
+            //    .First().Password;
 
-            if (findPerson != null)
+            if (person!= null)
             {
-                dgRestorePassword.ItemsSource = findPerson;
+                dgRestorePassword.ItemsSource = person;
             }
             else
             {
