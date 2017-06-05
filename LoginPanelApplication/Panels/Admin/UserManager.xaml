@@ -18,7 +18,7 @@
    <!--             
  -->               <DataGrid Margin="10" MaxHeight="370"  
                   x:Name="DataGridManager" 
-                  AlternatingRowBackground="AliceBlue"
+                  AlternatingRowBackground="RosyBrown"
                   AutoGenerateColumns="False"
                   CanUserResizeRows="False"  
                   CanUserAddRows="False" 

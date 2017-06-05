@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginPanelApplication"
         mc:Ignorable="d"
-        Title="Employee Management System" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="GhostWhite"  >
+        Title="Employee Management System" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="GhostWhite"  WindowTitleBrush="RosyBrown">
     <Grid>
         
     </Grid>

@@ -44,6 +44,15 @@ namespace LoginPanelApplication.Panels
                                where a.UserID.Equals(selectedUser.UserID)
                                select new { a.UserID, a.Name, a.LastName, a.Role, a.DateOfEmployment, b.Login, b.Password, a.Status, });
 
+            var update = from x in LinqManager.usersDataContext.Loginfos
+                         select x;
+
+            foreach (var row in update)
+            {
+                row.Hours = row.LogoutDate - row.LoginDate;
+                LinqManager.usersDataContext.SubmitChanges();
+            }
+
             StackPanelDetails.DataContext = userDetails;
         }
 
@@ -121,6 +130,7 @@ namespace LoginPanelApplication.Panels
                                  select x)
                                  .Where(y => y.LoginDate.Value.Month.Equals(DateTime.Today.AddDays(-1).Month))
                                  .ToList();
+
 
             List < Loginfo > monthlyLoginRaport = new List<Loginfo>();
             TimeSpan totalDayHours;
