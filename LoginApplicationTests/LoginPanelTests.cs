@@ -10,18 +10,17 @@ namespace LoginApplicationTests
     public class LoginPanelTests
     {
         [TestMethod]
-        public void Should_Login_With_Admin_If_Login_And_Password_Are_Correct()
+        public async void Should_Login_With_Admin_If_Login_And_Password_Are_CorrectAsync()
         {
             //-- Arange
-            MainWindow Window = new MainWindow();
+            //MainWindow Window = new MainWindow();
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "admin";
             loginPanel.TestTxtPassword.Password = "admin";
-            loginPanel.Login();
+            await loginPanel.LoginAsync();
 
             var expected = LinqManager.usersDataContext.LoginDatas
-                .Where(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password))
-                .First()
+                .First(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password))
                 .User;
             //-- Act 
             var actual = LinqManager.loggedInUser;
@@ -42,11 +41,11 @@ namespace LoginApplicationTests
         public void Shouldnt_Login_With_Admin_If_Login_And_Password_Are_Incorrect()
         {
             //-- Arange
-            MainWindow Window = new MainWindow();
+            //MainWindow Window = new MainWindow();
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "Admin";
             loginPanel.TestTxtPassword.Password = "Admin";
-            loginPanel.Login();
+            loginPanel.LoginAsync();
 
             var expected = false;
 
@@ -66,7 +65,7 @@ namespace LoginApplicationTests
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "ddąbrowski";
             loginPanel.TestTxtPassword.Password = "Darek123";
-            loginPanel.Login();
+            loginPanel.LoginAsync();
 
             var expected = LinqManager.usersDataContext.LoginDatas
                 .Where(x => x.Login.Equals(loginPanel.TestTxtLogin.Text) && x.Password.Equals(loginPanel.TestTxtPassword.Password))
@@ -94,7 +93,7 @@ namespace LoginApplicationTests
             LoginPanel loginPanel = new LoginPanel();
             loginPanel.TestTxtLogin.Text = "ddąbrowski";
             loginPanel.TestTxtPassword.Password = "darek123";
-            loginPanel.Login();
+            loginPanel.LoginAsync();
 
             var expected = false;
 

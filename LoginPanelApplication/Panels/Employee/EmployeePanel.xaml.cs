@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
 using System.Collections.Generic;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace LoginPanelApplication.Panels
 {
@@ -13,21 +15,27 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class EmployeePanel : Page
     {
+        readonly MetroWindow _metroWindow = (MetroWindow) Application.Current.MainWindow;
         public EmployeePanel()
         {
             InitializeComponent();
  
             SetLabelContent();
-            hasToChangePassword();
+            hasToChangePasswordAsync();
         }
 
-        private void hasToChangePassword()
+        private async void hasToChangePasswordAsync()
         {
             if (LinqManager.loggedInUser.ChangePassword)
             {
-                MessageBox.Show("You are login for the first time, or your password has been changed. You have to set new password", "Set new password", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                ChangePassword setNew = new ChangePassword();
-                setNew.ShowDialog();
+                
+                var result = await _metroWindow.ShowMessageAsync("Set new password",
+                    "You are login for the first time, or your password has been changed. You have to set new password");
+                if (result == MessageDialogResult.Affirmative)
+                {
+                    ChangePassword setNew = new ChangePassword();
+                    setNew.ShowDialog();
+                }
             }
         }
 
@@ -45,9 +53,10 @@ namespace LoginPanelApplication.Panels
         {
             string loginDate = LinqManager.logInfo.LoginDate.ToString();
             string name = LinqManager.loggedInUser.Name;
-            string login = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(LinqManager.loggedInUser.UserID)).First().Login;
+            string login = LinqManager.usersDataContext.LoginDatas.First(x => x.UserID.Equals(LinqManager.loggedInUser.UserID)).Login;
 
-            lblCurrentUser.Content = "Welcome " + name + " (" + login + ")   " + " Login date: " + loginDate + ". Have a nice day :). \n";
+            lblCurrentUser.Content = "Login date: " + loginDate + ". Have a nice day :). \n";
+            lblHello.Content = "Welcome " + name + " (" + login + ")";
         }
 
         private void btnChecAttendance_Click(object sender, RoutedEventArgs e)

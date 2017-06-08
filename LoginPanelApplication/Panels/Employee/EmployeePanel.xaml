@@ -5,7 +5,7 @@ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 xmlns:converter="clr-namespace:LoginPanelApplication.Converters"
 mc:Ignorable="d" 
-d:DesignHeight="600" d:DesignWidth="900" Background="AliceBlue"
+d:DesignHeight="600" d:DesignWidth="900" Background="GhostWhite"
 Title="EmployeePanel">
  
     <Grid>
@@ -13,8 +13,9 @@ Title="EmployeePanel">
             <RowDefinition Height="4*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-
+    <Label x:Name="lblHello" Margin="10" FontSize="20" FontWeight="Bold" >WELCOME DARIUSZ (ddąbrowski)</Label>
         <Grid Grid.Row="0" VerticalAlignment="Center">
+            
             <StackPanel>
                 <Button x:Name="Logout" Margin="10" Click="Logout_Click">Logout</Button>
                 <Button x:Name="btnChecAttendance" Margin="10" Click="btnChecAttendance_Click">Check Attendance</Button>

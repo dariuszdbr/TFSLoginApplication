@@ -14,23 +14,23 @@
         <elementListCompartment Id="11c38cf6-d2ce-4105-9825-1ecb10188848" absoluteBounds="9.015, 2.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4c80930a-dfcd-4bc0-baa9-ae332595d78e" absoluteBounds="4.75, 0.625, 2, 2.7324039713541666">
+    <classShape Id="6c557a85-0644-40bf-96e7-39fd7713e2e7" absoluteBounds="5.25, 1.875, 2, 2.9247054036458331">
       <DataClassMoniker Name="/UserDatabaseDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="46e6c159-ac2c-42f6-bb8f-e63fab9d1403" absoluteBounds="4.765, 1.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a019956b-3277-458c-9a64-419cbd971188" absoluteBounds="5.265, 2.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.75 : 2.99120198567708); (2.5 : 2.99120198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.25 : 3.41429768880208); (2.5 : 3.41429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UserDatabaseDataContext/User/User_LoginData" />
       <nodes>
-        <classShapeMoniker Id="4c80930a-dfcd-4bc0-baa9-ae332595d78e" />
+        <classShapeMoniker Id="6c557a85-0644-40bf-96e7-39fd7713e2e7" />
         <classShapeMoniker Id="23b922b3-f008-4552-85de-2666f2ee99b0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.75 : 2.74120198567708); (9 : 2.74120198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.25 : 3.01044840494792); (9 : 3.01044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UserDatabaseDataContext/User/User_Loginfo" />
       <nodes>
-        <classShapeMoniker Id="4c80930a-dfcd-4bc0-baa9-ae332595d78e" />
+        <classShapeMoniker Id="6c557a85-0644-40bf-96e7-39fd7713e2e7" />
         <classShapeMoniker Id="343fd8ce-52ad-4c3b-999a-4bf5c88cd169" />
       </nodes>
     </associationConnector>

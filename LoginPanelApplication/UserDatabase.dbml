@@ -31,6 +31,7 @@
       <Column Name="[In]" Member="In" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Out" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="FailedLoginCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="User_LoginData" Member="LoginDatas" ThisKey="UserID" OtherKey="UserID" Type="LoginData" />
       <Association Name="User_Loginfo" Member="Loginfos" ThisKey="UserID" OtherKey="UserID" Type="Loginfo" />
     </Type>

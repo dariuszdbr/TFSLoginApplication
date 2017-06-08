@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Linq;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace LoginPanelApplication.Panels
 {
@@ -18,71 +20,109 @@ namespace LoginPanelApplication.Panels
         {
             InitializeComponent();
             DisplayUsers();
+            //UpdateDatabase();
         }
 
         private void DisplayUsers()
         {
             LinqManager.usersDataContext = new UserDatabaseDataContext();
-            var Join = (from a in LinqManager.usersDataContext.Users
-                        join b in LinqManager.usersDataContext.LoginDatas
-                        on a.UserID equals b.UserID
-                        select  new { a.UserID, a.Name, a.LastName, a.Role, a.In, a.Out, a.DateOfEmployment, b.Login, b.Password, a.Status}).Skip(1);
 
-            DataGridManager.ItemsSource = Join;           
+            DataGridManager.ItemsSource = (from a in LinqManager.usersDataContext.Users
+                join b in LinqManager.usersDataContext.LoginDatas
+                on a.UserID equals b.UserID
+                orderby a.UserID
+                select new
+                {
+                    a.ImageId,
+                    a.UserID,
+                    a.Name,
+                    a.LastName,
+                    a.Role,
+                    a.In,
+                    a.Out,
+                    a.DateOfEmployment,
+                    b.Login,
+                    b.Password,
+                    a.Status
+                }).Skip(1);
         }
+
+        //private static void UpdateDatabase()
+        //{
+        //    var update = from x in LinqManager.usersDataContext.Loginfos
+        //                 select x;
+
+        //    foreach (var row in update)
+        //    {
+        //        row.Hours = row.LogoutDate - row.LoginDate;
+        //        LinqManager.usersDataContext.SubmitChanges();
+        //    }
+        //}
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             PageSwitcher.Navigate(new AdminPanel());
         }
 
-        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        private async void btnDeleteUser_ClickAsync(object sender, RoutedEventArgs e)
         {
             var selectedItem = DataGridManager.SelectedItem;
-            var ID = selectedItem.GetType().GetProperty("UserID").GetValue(selectedItem);
-            User user = LinqManager.usersDataContext.Users.Where(x => x.UserID.Equals(ID)).First();
-
-            if (user != null)
+            try
             {
-                MessageBoxResult result = MessageBox.Show("Are you sure?\nThere is no undo once data is deleted!", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var ID = selectedItem.GetType().GetProperty("UserID")?.GetValue(selectedItem);
+                User user = LinqManager.usersDataContext.Users.First(x => x.UserID.Equals(ID));
 
-                if (result == MessageBoxResult.Yes)
+                if (user != null)
                 {
-                    var deleteLoginfos = from x in LinqManager.usersDataContext.Loginfos
-                                         where x.UserID.Equals(user.UserID)
-                                         select x;
+                    var metroWindow = (MetroWindow) Application.Current.MainWindow;
+                    var result = await metroWindow.ShowMessageAsync("Confirmation",
+                        "Are You sure?\nThere is no undo once data is deleted!",
+                        MessageDialogStyle.AffirmativeAndNegative);
+                    // MessageBoxResult result = MessageBox.Show("Are you sure?\nThere is no undo once data is deleted!", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                    foreach (var row in deleteLoginfos)
+                    if (result == MessageDialogResult.Affirmative)
                     {
-                        LinqManager.usersDataContext.Loginfos.DeleteOnSubmit(row);
-                    }
+                        var deleteLoginfos = from x in LinqManager.usersDataContext.Loginfos
+                            where x.UserID.Equals(user.UserID)
+                            select x;
 
-                    LinqManager.usersDataContext.LoginDatas.DeleteOnSubmit(user.LoginDatas.First());
-                    LinqManager.usersDataContext.Users.DeleteOnSubmit(user);
+                        foreach (var row in deleteLoginfos)
+                        {
+                            LinqManager.usersDataContext.Loginfos.DeleteOnSubmit(row);
+                        }
 
-                    try
-                    {
-                        LinqManager.usersDataContext.SubmitChanges();
+                        LinqManager.usersDataContext.LoginDatas.DeleteOnSubmit(user.LoginDatas.First());
+                        LinqManager.usersDataContext.Users.DeleteOnSubmit(user);
+
+                        try
+                        {
+                            LinqManager.usersDataContext.SubmitChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            await metroWindow.ShowMessageAsync("Error", "Something went wrong: " + ex.Message);
+                        }
+                        finally
+                        {
+                            DisplayUsers();
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Something went wrong: " + ex.Message);
+                        await metroWindow.ShowMessageAsync("Deletion status", "Deletion canceled");
                     }
-                    finally
-                    {
-                        DisplayUsers();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Deletion canceled");
                 }
             }
-            else
-                MessageBox.Show("Please select first the user You want to Delete", "Delete result", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            catch (Exception)
+            {
+                var metroWindow = (MetroWindow) Application.Current.MainWindow;
+                await metroWindow.ShowMessageAsync("Deletion result",
+                    "Please select first the user You want to Delete");
+            }
         }
 
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+    private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUser add = new AddUser();
             add.ShowDialog();
@@ -92,23 +132,22 @@ namespace LoginPanelApplication.Panels
 
         private void DataGridManager_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            selectUser();
+            selectUserAsync();
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            selectUser();
+            selectUserAsync();
         }
 
-        public void selectUser()
+        public async void selectUserAsync()
         {
             try
             {
                 var selectedItem = DataGridManager.SelectedItem;
 
-                var ID = selectedItem.GetType().GetProperty("UserID").GetValue(selectedItem);
-                User user = LinqManager.usersDataContext.Users.Where(x => x.UserID.Equals(ID)).First();
-                LoginData loginData = LinqManager.usersDataContext.LoginDatas.Where(x => x.UserID.Equals(ID)).First();
+                var ID = selectedItem.GetType().GetProperty("UserID")?.GetValue(selectedItem);
+                User user = LinqManager.usersDataContext.Users.First(x => x.UserID.Equals(ID));
 
                 UserDetails userdetails = new UserDetails(user);
                 userdetails.ShowDialog();
@@ -118,9 +157,10 @@ namespace LoginPanelApplication.Panels
             }
             catch (Exception)
             {
-                MessageBox.Show("Please select the Employee.");
-            }           
-        }    
+                var metroWindow = (MetroWindow)Application.Current.MainWindow;
+                await metroWindow.ShowMessageAsync("Selection status", "Please select the Employee.");
+            }
+        }
     }
 
    

@@ -18,7 +18,7 @@
    <!--             
  -->               <DataGrid Margin="10" MaxHeight="370"  
                   x:Name="DataGridManager" 
-                  AlternatingRowBackground="RosyBrown"
+                  
                   AutoGenerateColumns="False"
                   CanUserResizeRows="False"  
                   CanUserAddRows="False" 
@@ -29,7 +29,8 @@
                   >
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="Auto" Header="ID" Binding="{Binding Path=UserID}">
+                        
+                        <DataGridTextColumn Width="Auto" Header="User ID" Binding="{Binding Path=UserID}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
@@ -37,6 +38,21 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
+                        <DataGridTemplateColumn Header="Image" IsReadOnly="True" >
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Path=ImageId, Converter={StaticResource ImageConverter}}" MaxHeight="50" MaxWidth="50" VerticalAlignment="Center">
+
+                                    </Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
                         <DataGridTextColumn  Width="Auto" Header="Name" Binding="{Binding Path=Name}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
@@ -69,7 +85,7 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn Width="60" Header="Role" Binding="{Binding Path=Role, Converter={StaticResource BoolToUserRoleConverter}}">
+                        <DataGridTextColumn Width="80" Header="Role" Binding="{Binding Path=Role, Converter={StaticResource BoolToUserRoleConverter}}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
@@ -77,7 +93,7 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn Width="auto" Header="Last login date" Binding="{Binding Path=In}">
+                        <DataGridTextColumn Width="130" Header="Last login date" Binding="{Binding Path=In}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
@@ -85,7 +101,7 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn Width="auto" Header="Last logout date" Binding="{Binding Path=Out}">
+                        <DataGridTextColumn Width="130" Header="Last logout date" Binding="{Binding Path=Out}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
@@ -93,7 +109,7 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
                         
-                        <DataGridTextColumn Width="auto" Header="Date of employment" Binding="{Binding Path=DateOfEmployment}">
+                        <DataGridTextColumn Width="130" Header="Date of employment" Binding="{Binding Path=DateOfEmployment}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
@@ -101,7 +117,7 @@
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn Header="Status" x:Name="comboBoxStatus" Binding="{Binding Path=Status, Converter={StaticResource BoolToUserStatusConverter}}"  >
+                        <DataGridTextColumn Header="Status" Binding="{Binding Path=Status, Converter={StaticResource BoolToUserStatusConverter}}"  >
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="FontWeight" Value="Bold"/>
@@ -128,7 +144,7 @@
                 </DataGrid>
                 <Button Margin="20,0,20,10" x:Name="btnAddUser" Click="btnAddUser_Click">Add User</Button>
                 <Button Margin="20,0,20,10" x:Name="btnDetails" Click="btnDetails_Click">Check User Attendace</Button>
-                <Button Margin="20,0,20,10" x:Name="btnDeleteUser" Click="btnDeleteUser_Click">Delete Selected User</Button>
+                <Button Margin="20,0,20,10" x:Name="btnDeleteUser" Click="btnDeleteUser_ClickAsync">Delete Selected User</Button>
             </StackPanel>
             <Button VerticalAlignment="Bottom" DockPanel.Dock="Left" Margin="20,0,20,0" x:Name="btnBack" Click="btnBack_Click">Back to Admin panel</Button>
         </Grid>

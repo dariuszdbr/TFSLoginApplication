@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace LoginPanelApplication.Panels
 {
@@ -19,17 +21,18 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class AddUser
     {
+        
         public AddUser()
         {
             InitializeComponent();
             txtName.Focus();
         }
 
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        private async void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
             if (txtName.Text.Length < 1 || txtLastName.Text.Length < 1)
             {
-                MessageBox.Show("Please fill Name and the Last Name.", "Name and last name required", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                await this.ShowMessageAsync("Name and last name required","Please fill Name and the Last Name.");
                 txtName.Focus();
             }
             else
@@ -37,6 +40,8 @@ namespace LoginPanelApplication.Panels
                 var role = false;
                 var password = Password.Generate();
                 var login = GenerateLogin(txtName.Text, txtLastName.Text);
+
+                var rand = new Random();
 
                 User newUser = new User()
                 {
@@ -46,6 +51,7 @@ namespace LoginPanelApplication.Panels
                     DateOfEmployment = DateTime.Now,
                     Role = role,
                     ChangePassword = true,
+                    ImageId = rand.Next(0,2)
                 };
 
                 LoginData newUserLoginAndPassword = new LoginData()
@@ -71,20 +77,21 @@ namespace LoginPanelApplication.Panels
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Something went wrong: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    await this.ShowMessageAsync("Error", "Something went wrong: " + ex.Message);
                 }
 
-                if(MessageBox.Show("User has been sucesfully added.") == MessageBoxResult.OK)
                 this.Close();
+                
+                await this.ShowMessageAsync("Employee Added", "User has been sucesfully added");   
             }
              
         }
 
         private string GenerateLogin(string userName, string lastName)
         {
-            bool acces = false;
-            string login = String.Empty;
-            int number = 0;
+            var acces = false;
+            string login;
+            var number = 0;
             do
             {
                 login = (number > 0) ? userName[0].ToString().ToLower() + lastName.ToLower() + number : userName[0].ToString().ToLower() + lastName.ToLower();

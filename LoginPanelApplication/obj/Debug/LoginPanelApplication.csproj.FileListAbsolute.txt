@@ -192,12 +192,8 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelA
 C:\Users\Daiusz\Desktop\Repo\newLinq\Nowy folder\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserDetails.baml
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\MainWindow.g.cs
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\AdminPanel.g.cs
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.g.cs
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\LoginPanel.g.cs
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.g.cs
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserDetails.g.cs
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserManager.g.cs
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\App.g.cs
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication_Content.g.cs
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -211,12 +207,8 @@ C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\Debug\LoginPanelApplication.exe
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\Debug\LoginPanelApplication.pdb
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\MainWindow.baml
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\AdminPanel.baml
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\EmployeePanel.baml
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\LoginPanel.baml
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\PasswordRecoveryPanel.baml
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserDetails.baml
-C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\UserManager.baml
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.g.resources
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.Properties.Resources.resources
 C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache
@@ -241,7 +233,6 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\o
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csproj.GenerateResource.Cache
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.exe
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.pdb
-C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\AddUser.g.cs
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\AdminPanel.g.cs
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Employee\ChangePassword.g.cs
@@ -259,3 +250,21 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\b
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.pdb
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.xml
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\App.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.pdb
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\bin\Debug\MahApps.Metro.xml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\AddUser.g.cs
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\AdminPanel.g.cs
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Employee\ChangePassword.g.cs
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Employee\EmployeePanel.g.cs
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\UserDetails.g.cs
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\UserManager.g.cs
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\App.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\AddUser.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\AdminPanel.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Employee\ChangePassword.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Employee\EmployeePanel.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\UserDetails.baml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginPanelApplication\obj\Debug\Panels\Admin\UserManager.baml
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginPanelApplication\obj\Debug\LoginPanelApplication.csprojResolveAssemblyReference.cache

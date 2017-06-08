@@ -79,6 +79,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToUserStatusConverter.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\ImageConverter.cs" />
     <Compile Include="Converters\TimeSpanConverter.cs" />
     <Compile Include="Panels\Admin\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
@@ -211,6 +212,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\person1.jpg" />
+    <Resource Include="Images\person2.jpg" />
+    <Resource Include="Images\person3.jpg" />
+    <Resource Include="Images\person4.jpg" />
+    <Resource Include="Images\person5.jpg" />
+    <Resource Include="Images\person6.jpg" />
     <Content Include="SqlUserDatabase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

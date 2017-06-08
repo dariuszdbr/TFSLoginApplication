@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,20 +26,26 @@ namespace LoginPanelApplication.Panels
             InitializeComponent();
         }
 
-        private void btmSetPassword_Click(object sender, RoutedEventArgs e)
+        private async void btmSetPassword_ClickAsync(object sender, RoutedEventArgs e)
         {
             bool equal = false;
             bool correct = false;
-
+            
             if (txtPassword.Text.Equals(txtRepeat.Text))
                 equal = true;
-            else MessageBox.Show("Password must be equals", "Password status", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            else
+            {      
+                await this.ShowMessageAsync("Password status", "Password must be equals");
+            }
+
 
             if (Password.Check(txtPassword.Text))
                 correct = true;
-            else MessageBox.Show("Password should contain at least 8 characters with one uppercase letter, one lowercase letter and one digit", "Password correctness ", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            else
+                await this.ShowMessageAsync("Password correctness",
+                    "Password should contain at least 8 characters with one uppercase letter, one lowercase letter and one digit");
 
-            if(equal && correct)
+            if (equal && correct)
             {
                 LinqManager.loggedInUser.ChangePassword = false;
                 LinqManager.loggedInUser.LoginDatas.First().Password = txtPassword.Text;
@@ -45,5 +53,6 @@ namespace LoginPanelApplication.Panels
                 this.Close();
             }
         }
+
     }
 }

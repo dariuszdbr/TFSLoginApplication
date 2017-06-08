@@ -1,5 +1,8 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +22,8 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class UserDetails 
     {
-        User selectedUser;
-        bool changePassword = false;
+        User _selectedUser;
+       
 
         public UserDetails(User user)
         {
@@ -32,7 +35,7 @@ namespace LoginPanelApplication.Panels
 
         private void SelectedUser(User user)
         {
-            selectedUser = (from x in LinqManager.usersDataContext.Users
+            _selectedUser = (from x in LinqManager.usersDataContext.Users
                             where x.UserID.Equals(user.UserID)
                             select x).Single();
         }
@@ -41,19 +44,13 @@ namespace LoginPanelApplication.Panels
         {
             var userDetails = (from a in LinqManager.usersDataContext.Users
                                join b in LinqManager.usersDataContext.LoginDatas on a.UserID equals b.UserID
-                               where a.UserID.Equals(selectedUser.UserID)
-                               select new { a.UserID, a.Name, a.LastName, a.Role, a.DateOfEmployment, b.Login, b.Password, a.Status, });
+                               where a.UserID.Equals(_selectedUser.UserID)
+                               select new { a.ImageId, a.UserID, a.Name, a.LastName, a.Role, a.DateOfEmployment, b.Login, b.Password, a.Status, });
 
-            var update = from x in LinqManager.usersDataContext.Loginfos
-                         select x;
-
-            foreach (var row in update)
-            {
-                row.Hours = row.LogoutDate - row.LoginDate;
-                LinqManager.usersDataContext.SubmitChanges();
-            }
+ 
 
             StackPanelDetails.DataContext = userDetails;
+            ImageSource.DataContext = _selectedUser.ImageId;
         }
 
         private void checkRole()
@@ -67,9 +64,9 @@ namespace LoginPanelApplication.Panels
             {
                 btnBlock.Visibility = Visibility.Visible;
             }
-            if(selectedUser.Status) btnBlock.Content = "Block the User";
+            if(_selectedUser.Status) btnBlock.Content = "Block the User";
 
-            if(!selectedUser.Status) btnBlock.Content = "Active";
+            if(!_selectedUser.Status) btnBlock.Content = "Active";
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -77,47 +74,53 @@ namespace LoginPanelApplication.Panels
             this.Close();
         }
 
-        private void btnBlock_Click(object sender, RoutedEventArgs e)
+        private async void btnBlock_ClickAsync(object sender, RoutedEventArgs e)
         {
+            
             if (btnBlock.Content.Equals("Block the User"))
             {
-                if (MessageBox.Show("Are you sure?", "Change user status", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
-                    selectedUser.Status = false;
+                
+                var result = await this.ShowMessageAsync("Change user status", "Are you sure?",
+                    MessageDialogStyle.AffirmativeAndNegative);
+                if (result == MessageDialogResult.Affirmative)
+                    _selectedUser.Status = false;
             }
-            else selectedUser.Status = true;
+            else _selectedUser.Status = true;
 
             LinqManager.usersDataContext.SubmitChanges();
             LoadData();
             checkRole();
         }
 
-        private void btnDailyRaport_Click(object sender, RoutedEventArgs e)
+        private async void btnDailyRaport_ClickAsync(object sender, RoutedEventArgs e)
         {
             txtBlockRaport.Text = "";
 
             var dailyRaport = (from x in LinqManager.usersDataContext.Loginfos
-                               where x.UserID.Equals(selectedUser.UserID)
+                               where x.UserID.Equals(_selectedUser.UserID)
                                select x)
                               .Where(y => y.LoginDate.Value.Date.Equals(DateTime.Today))
                               .ToList();
 
             var dailyLoginInfo = new List<Loginfo>();
-            TimeSpan totalDailyHours = TimeSpan.Zero;
-            if (dailyRaport.Count() > 0)
+            var totalDailyHours = TimeSpan.Zero;
+            if (dailyRaport.Any())
             {
                 foreach (var row in dailyRaport)
                 {
                     if (row.LogoutDate == null)
                         totalDailyHours += DateTime.Now - row.LoginDate.Value;
                     else
-                    totalDailyHours += row.Hours.Value;
+                    {
+                        totalDailyHours += row.Hours.Value;
+                    }
                 }
-                dailyLoginInfo.Add(new Loginfo { UserID = selectedUser.UserID, LoginDate = DateTime.Now.Date, Hours = totalDailyHours });
+                dailyLoginInfo.Add(new Loginfo { UserID = _selectedUser.UserID, LoginDate = DateTime.Now.Date, Hours = totalDailyHours });
             }
             else
-                MessageBox.Show("The employee is absent today");
+                await this.ShowMessageAsync("Employee status", "The employee is absent today");
 
-            UserDataGrid.ItemsSource = dailyLoginInfo;
+            UserDataGrid.ItemsSource = dailyRaport;
         }
 
         private void btnMonthlyRaport_Click(object sender, RoutedEventArgs e)
@@ -125,21 +128,20 @@ namespace LoginPanelApplication.Panels
             txtBlockRaport.Text = "";
 
             var monthlyRaport = (from x in LinqManager.usersDataContext.Loginfos
-                                 where x.UserID.Equals(selectedUser.UserID)
-                                 orderby x.LoginDate ascending
+                                 where x.UserID.Equals(_selectedUser.UserID)
+                                 orderby x.LoginDate
                                  select x)
                                  .Where(y => y.LoginDate.Value.Month.Equals(DateTime.Today.AddDays(-1).Month))
                                  .ToList();
 
 
             List < Loginfo > monthlyLoginRaport = new List<Loginfo>();
-            TimeSpan totalDayHours;
 
             for (int i = 0; i < monthlyRaport.Count(); i++)
             {            
                 var day = monthlyRaport.ElementAt(i).LoginDate.Value;
                 
-                totalDayHours = TimeSpan.Zero;
+                var totalDayHours = TimeSpan.Zero;
                 do
                 {
                     if(monthlyRaport.ElementAt(i).Hours == null)
@@ -159,23 +161,23 @@ namespace LoginPanelApplication.Panels
 
                 } while (day.DayOfYear.Equals(monthlyRaport.ElementAt(i).LoginDate.Value.DayOfYear));
                 i--;
-                monthlyLoginRaport.Add(new Loginfo() { UserID = selectedUser.UserID, LoginDate = day.Date, Hours = totalDayHours });
+                monthlyLoginRaport.Add(new Loginfo() { UserID = _selectedUser.UserID, LoginDate = day.Date, Hours = totalDayHours });
             }
             UserDataGrid.ItemsSource = monthlyLoginRaport;           
         }
 
-        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        private async void btnChangePassword_ClickAsync(object sender, RoutedEventArgs e)
         {
             txtPassword.Text = Password.Generate();
-            selectedUser.ChangePassword = true;
-            selectedUser.LoginDatas.First().Password = txtPassword.Text;
+            _selectedUser.ChangePassword = true;
+            _selectedUser.LoginDatas.First().Password = txtPassword.Text;
             try
             {
                 LinqManager.usersDataContext.SubmitChanges();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong, " + ex.Message, "Error");
+                await this.ShowMessageAsync("Error","Something went wrong, " + ex.Message);
             }
         }
     }

@@ -42,7 +42,7 @@ namespace LoginPanelApplication
     #endregion
 		
 		public UserDatabaseDataContext() : 
-				base(global::LoginPanelApplication.Properties.Settings.Default.SqlUserDatabaseConnectionString1, mappingSource)
+				base(global::LoginPanelApplication.Properties.Settings.Default.SqlUserDatabaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -496,6 +496,8 @@ namespace LoginPanelApplication
 		
 		private System.Nullable<int> _FailedLoginCount;
 		
+		private System.Nullable<int> _ImageId;
+		
 		private EntitySet<LoginData> _LoginDatas;
 		
 		private EntitySet<Loginfo> _Loginfos;
@@ -524,6 +526,8 @@ namespace LoginPanelApplication
     partial void OnOutChanged();
     partial void OnFailedLoginCountChanging(System.Nullable<int> value);
     partial void OnFailedLoginCountChanged();
+    partial void OnImageIdChanging(System.Nullable<int> value);
+    partial void OnImageIdChanged();
     #endregion
 		
 		public User()
@@ -729,6 +733,26 @@ namespace LoginPanelApplication
 					this._FailedLoginCount = value;
 					this.SendPropertyChanged("FailedLoginCount");
 					this.OnFailedLoginCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImageId", DbType="Int")]
+		public System.Nullable<int> ImageId
+		{
+			get
+			{
+				return this._ImageId;
+			}
+			set
+			{
+				if ((this._ImageId != value))
+				{
+					this.OnImageIdChanging(value);
+					this.SendPropertyChanging();
+					this._ImageId = value;
+					this.SendPropertyChanged("ImageId");
+					this.OnImageIdChanged();
 				}
 			}
 		}

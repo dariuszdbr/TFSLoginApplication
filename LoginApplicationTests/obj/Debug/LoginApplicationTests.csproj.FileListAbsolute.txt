@@ -67,3 +67,30 @@ C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\b
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.csprojResolveAssemblyReference.cache
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.dll
 C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.pdb
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\SqlUserDatabase.mdf
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\SqlUserDatabase_log.ldf
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginApplicationTests.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginApplicationTests.pdb
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginPanelApplication.exe
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\nunit.framework.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\MahApps.Metro.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginPanelApplication.pdb
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\LoginPanelApplication.exe.config
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\nunit.framework.xml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\MahApps.Metro.pdb
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\bin\Debug\MahApps.Metro.xml
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.csprojResolveAssemblyReference.cache
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.dll
+C:\Users\Dariusz\Desktop\new linq\TFSLoginApplication\LoginApplicationTests\obj\Debug\LoginApplicationTests.pdb
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\bin\Debug\MahApps.Metro.dll
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\bin\Debug\MahApps.Metro.pdb
+C:\Users\Daiusz\Desktop\Repo\newLinq\TFSLoginApplication\LoginApplicationTests\bin\Debug\MahApps.Metro.xml
