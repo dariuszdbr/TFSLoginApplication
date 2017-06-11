@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using System.Threading.Tasks;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
@@ -23,16 +24,11 @@ namespace LoginPanelApplication.Panels
             PageSwitcher.Navigate(new LoginPanel());
         }
 
-        private async void btnFindPassword_ClickAsync(object sender, RoutedEventArgs e)
+        private void btnFindPassword_Click(object sender, RoutedEventArgs e)
         {
-
             var person = (from user in LinqManager.usersDataContext.Users
                           where user.Name == txtName.Text && user.LastName == txtLastName.Text && user.LoginDatas.First().Login.Equals(txtUserLogin.Text)
                           select new { UserID = user.UserID, Name = user.Name, LastName = user.LastName, Login = user.LoginDatas.First().Login, Password = user.LoginDatas.First().Password });
-            //var findPerson = LinqManager.usersDataContext.Users.Where( p => p.Name == txtName.Text && p.LastName == txtLastName.Text /*&& p.Login == txtUserLogin.Text */)
-            //    .First()
-            //    .LoginDatas.Where(x => x.Login.Equals(txtUserLogin))
-            //    .First().Password;
 
             if (person.Any())
             {
@@ -40,17 +36,19 @@ namespace LoginPanelApplication.Panels
             }
             else
             {
-                var metroWindow = (MetroWindow)Application.Current.MainWindow;
-                var result = await metroWindow.ShowMessageAsync("Search Result",
-                    "User not found.\nPlease make sure you entered the correct data.");
-                if (result == MessageDialogResult.Affirmative)
-                {
-                    txtLastName.Clear();
-                    txtName.Clear();
-                    txtUserLogin.Clear();
-                    txtUserLogin.Focus();
-                }
+                ShowMessageBox("Search Result", "User not found.\nPlease make sure you entered the correct data.");
+
+                txtLastName.Clear();
+                txtName.Clear();
+                txtUserLogin.Clear();
+                txtUserLogin.Focus();
             }
+        }
+
+        private static async void ShowMessageBox(string title, string content)
+        {
+            var metroWindow = (MetroWindow) Application.Current.MainWindow;
+            await metroWindow.ShowMessageAsync(title,content);
         }
     }
 }

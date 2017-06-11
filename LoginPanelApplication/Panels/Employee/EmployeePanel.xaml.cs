@@ -15,27 +15,27 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class EmployeePanel : Page
     {
-        readonly MetroWindow _metroWindow = (MetroWindow) Application.Current.MainWindow;
         public EmployeePanel()
         {
             InitializeComponent();
  
             SetLabelContent();
-            hasToChangePasswordAsync();
+            hasToChangePassword();
+        }
+        private async void ShowMessageBox(string title, string content)
+        {
+            var _metroWindow = (MetroWindow)Application.Current.MainWindow;
+            await _metroWindow.ShowMessageAsync(title, content);
         }
 
-        private async void hasToChangePasswordAsync()
+        private void hasToChangePassword()
         {
             if (LinqManager.loggedInUser.ChangePassword)
             {
-                
-                var result = await _metroWindow.ShowMessageAsync("Set new password",
+                ShowMessageBox("Set new password",
                     "You are login for the first time, or your password has been changed. You have to set new password");
-                if (result == MessageDialogResult.Affirmative)
-                {
                     ChangePassword setNew = new ChangePassword();
                     setNew.ShowDialog();
-                }
             }
         }
 

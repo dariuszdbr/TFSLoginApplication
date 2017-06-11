@@ -23,19 +23,17 @@ namespace LoginPanelApplication.Panels
            
         }
 
-
-        public async System.Threading.Tasks.Task LoginAsync()
+        public void Login(string login, string password)
         {
-            var metroWindow = (MetroWindow)Application.Current.MainWindow;
-            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Equals(txtLogin.Text)))
+            if (LinqManager.usersDataContext.LoginDatas.Any(user => user.Login.Equals(login)))
             {
-                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.First(user => user.Login.Equals(txtLogin.Text)).User;
+                LinqManager.loggedInUser = LinqManager.usersDataContext.LoginDatas.First(user => user.Login.Equals(login)).User;
 
-                if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(txtPassword.Password)) && LinqManager.loggedInUser.Role)
+                if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(password)) && LinqManager.loggedInUser.Role)
                 {
-                    PageSwitcher.Navigate(new AdminPanel());                     // Switch to AdminPanel
+                    PageSwitcher.Navigate(new AdminPanel());                     // Switch to AdminPanel                  
                 }
-                else if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(txtPassword.Password)) && !LinqManager.loggedInUser.Role && LinqManager.loggedInUser.Status)
+                else if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(password)) && !LinqManager.loggedInUser.Role && LinqManager.loggedInUser.Status)
                 {
                     LinqManager.logInfo = new Loginfo() { UserID = LinqManager.loggedInUser.UserID, LoginDate = DateTime.Now, LogoutDate = null };
                     LinqManager.loggedInUser.In = LinqManager.logInfo.LoginDate;
@@ -43,51 +41,56 @@ namespace LoginPanelApplication.Panels
                     LinqManager.loggedInUser.FailedLoginCount = 0;
                     LinqManager.usersDataContext.SubmitChanges();
                     PageSwitcher.Navigate(new EmployeePanel());                  // Switch to EmployeePanel
+
                 }
 
-                else if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(txtPassword.Password)) && !LinqManager.loggedInUser.Role && !LinqManager.loggedInUser.Status)
+                else if (LinqManager.loggedInUser.LoginDatas.Any(x => x.Password.Equals(password)) && !LinqManager.loggedInUser.Role && !LinqManager.loggedInUser.Status)
                 {
-                    await metroWindow.ShowMessageAsync( "Account status","Your Account has been blocked, please contact with the admin");
+                    ShowMessageBox("Account status", "Your Account has been blocked, please contact with the admin");
                 }
 
                 else
                 {
-                    await metroWindow.ShowMessageAsync("Inncorrect Login or Password","Please enter a valid login or password");
+                    ShowMessageBox("Inncorrect Login or Password", "Please enter a valid login or password");
                     if (!LinqManager.loggedInUser.Role)
                     {
                         LinqManager.loggedInUser.FailedLoginCount++;
                         if (LinqManager.loggedInUser.FailedLoginCount == 3)
                         {
                             LinqManager.loggedInUser.Status = false;
-                            await metroWindow.ShowMessageAsync("Account status","Your Account has been blocked due to providing inncorect password, please contact with the admin");
+                            ShowMessageBox("Account status", "Your Account has been blocked due to providing inncorect password, please contact with the admin");
                         }
                         LinqManager.usersDataContext.SubmitChanges();
                     }
                 }
             }
             else
-            {               
-                var result = await metroWindow.ShowMessageAsync("Inncorrect Login or Password", "Please enter a valid login or password");
-                if (result == MessageDialogResult.Affirmative)
-                {
-                    txtLogin.Focus();
-                    txtLogin.Clear();
-                    txtPassword.Clear();
-                }
+            {
+                ShowMessageBox("Inncorrect Login or Password", "Please enter a valid login or password");
+
+                txtLogin.Focus();
+                txtLogin.Clear();
+                txtPassword.Clear();
             }
         }
 
-
-        private async void btnLogin_ClickAsync(object sender, RoutedEventArgs e)
+        private async void ShowMessageBox(string title, string content)
         {
-            await LoginAsync();
+            var _metroWindow = (MetroWindow)Application.Current.MainWindow;
+            await _metroWindow.ShowMessageAsync(title, content);
         }
 
-        private async void Grid_KeyDownAsync(object sender, System.Windows.Input.KeyEventArgs e)
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            Login(txtLogin.Text, txtPassword.Password);
+        }
+
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                await LoginAsync();
+                Login(txtLogin.Text, txtPassword.Password);
             }
         }
 
@@ -100,11 +103,6 @@ namespace LoginPanelApplication.Panels
         {
             PageSwitcher.Navigate(new PasswordRecveryPanel());
         }
-
-        public TextBox TestTxtLogin => txtLogin;
-        public PasswordBox TestTxtPassword => txtPassword;
-        public int TestUserID => userId; public async void GetSqlLoginForTestAsync()
-        { await LoginAsync(); }
     }
 }
 
