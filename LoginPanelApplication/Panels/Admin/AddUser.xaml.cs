@@ -28,11 +28,17 @@ namespace LoginPanelApplication.Panels
             txtName.Focus();
         }
 
-        private async void btnAddUser_Click(object sender, RoutedEventArgs e)
+        private async void ShowMessageBoxAsync(string title, string content)
+        {
+
+            await this.ShowMessageAsync(title, content);
+        }
+
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
             if (txtName.Text.Length < 1 || txtLastName.Text.Length < 1)
             {
-                await this.ShowMessageAsync("Name and last name required","Please fill Name and the Last Name.");
+                ShowMessageBoxAsync("Name and last name required","Please fill Name and the Last Name.");
                 txtName.Focus();
             }
             else
@@ -77,12 +83,12 @@ namespace LoginPanelApplication.Panels
                 }
                 catch (Exception ex)
                 {
-                    await this.ShowMessageAsync("Error", "Something went wrong: " + ex.Message);
+                    ShowMessageBoxAsync("Error", "Something went wrong: " + ex.Message);
                 }
 
                 this.Close();
                 
-                await this.ShowMessageAsync("Employee Added", "User has been sucesfully added");   
+                ShowMessageBoxAsync("Employee Added", "User has been sucesfully added");   
             }
              
         }

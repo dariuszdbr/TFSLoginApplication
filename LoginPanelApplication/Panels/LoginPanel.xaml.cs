@@ -15,8 +15,6 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class LoginPanel : Page
     {
-        int userId = 0;
-
         public LoginPanel()
         {
             InitializeComponent();

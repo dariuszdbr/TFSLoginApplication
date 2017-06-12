@@ -26,24 +26,29 @@ namespace LoginPanelApplication.Panels
             InitializeComponent();
         }
 
-        private async void btmSetPassword_ClickAsync(object sender, RoutedEventArgs e)
+        private async void ShowMessageBox(string title, string content)
         {
-            bool equal = false;
-            bool correct = false;
-            
-            if (txtPassword.Text.Equals(txtRepeat.Text))
-                equal = true;
-            else
-            {      
-                await this.ShowMessageAsync("Password status", "Password must be equals");
+            var _metroWindow = (MetroWindow)Application.Current.MainWindow;
+            await _metroWindow.ShowMessageAsync(title, content);
+        }
+
+        private void btmSetPassword_Click(object sender, RoutedEventArgs e)
+        {
+            bool equal = true;
+            bool correct = true;
+
+            if (!txtPassword.Text.Equals(txtRepeat.Text))
+            {
+                equal = false;
+                ShowMessageBox("Password status", "Password must be equals");
             }
 
-
-            if (Password.Check(txtPassword.Text))
-                correct = true;
-            else
-                await this.ShowMessageAsync("Password correctness",
+            else if (!Password.Check(txtPassword.Text))
+            {
+                correct = false;
+                ShowMessageBox("Password correctness",
                     "Password should contain at least 8 characters with one uppercase letter, one lowercase letter and one digit");
+            }
 
             if (equal && correct)
             {
@@ -53,6 +58,5 @@ namespace LoginPanelApplication.Panels
                 this.Close();
             }
         }
-
     }
 }

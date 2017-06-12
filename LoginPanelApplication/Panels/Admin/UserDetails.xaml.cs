@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace LoginPanelApplication.Panels
     /// </summary>
     public partial class UserDetails 
     {
-        User _selectedUser;
+        private User _selectedUser;
        
 
         public UserDetails(User user)
@@ -33,6 +34,7 @@ namespace LoginPanelApplication.Panels
             checkRole();
         }
 
+
         private void SelectedUser(User user)
         {
             _selectedUser = (from x in LinqManager.usersDataContext.Users
@@ -40,18 +42,18 @@ namespace LoginPanelApplication.Panels
                             select x).Single();
         }
 
+
         private void LoadData()
         {
             var userDetails = (from a in LinqManager.usersDataContext.Users
                                join b in LinqManager.usersDataContext.LoginDatas on a.UserID equals b.UserID
                                where a.UserID.Equals(_selectedUser.UserID)
-                               select new { a.ImageId, a.UserID, a.Name, a.LastName, a.Role, a.DateOfEmployment, b.Login, b.Password, a.Status, });
-
- 
+                               select new { a.ImageId, a.UserID, a.Name, a.LastName, a.Role, a.DateOfEmployment, b.Login, b.Password, a.Status, }); 
 
             StackPanelDetails.DataContext = userDetails;
             ImageSource.DataContext = _selectedUser.ImageId;
         }
+
 
         private void checkRole()
         {
@@ -69,33 +71,40 @@ namespace LoginPanelApplication.Panels
             if(!_selectedUser.Status) btnBlock.Content = "Active";
         }
 
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private async void btnBlock_ClickAsync(object sender, RoutedEventArgs e)
+
+        private void btnBlock_Click(object sender, RoutedEventArgs e)
         {
-            
+            BlockTheUser();
+            LoadData();
+            checkRole();
+        }
+
+
+        private async void BlockTheUser()
+        {
             if (btnBlock.Content.Equals("Block the User"))
             {
-                
-                var result = await this.ShowMessageAsync("Change user status", "Are you sure?",
+            
+           var result = await this.ShowMessageAsync("Change user status", "Are you sure?",
                     MessageDialogStyle.AffirmativeAndNegative);
+
                 if (result == MessageDialogResult.Affirmative)
                     _selectedUser.Status = false;
             }
             else _selectedUser.Status = true;
 
             LinqManager.usersDataContext.SubmitChanges();
-            LoadData();
-            checkRole();
         }
 
-        private async void btnDailyRaport_ClickAsync(object sender, RoutedEventArgs e)
-        {
-            txtBlockRaport.Text = "";
 
+        private void btnDailyRaport_Click(object sender, RoutedEventArgs e)
+        {
             var dailyRaport = (from x in LinqManager.usersDataContext.Loginfos
                                where x.UserID.Equals(_selectedUser.UserID)
                                select x)
@@ -118,22 +127,20 @@ namespace LoginPanelApplication.Panels
                 dailyLoginInfo.Add(new Loginfo { UserID = _selectedUser.UserID, LoginDate = DateTime.Now.Date, Hours = totalDailyHours });
             }
             else
-                await this.ShowMessageAsync("Employee status", "The employee is absent today");
+                ShowMessageBox("Employee status", "The employee is absent today");
 
             UserDataGrid.ItemsSource = dailyRaport;
         }
 
+
         private void btnMonthlyRaport_Click(object sender, RoutedEventArgs e)
         {
-            txtBlockRaport.Text = "";
-
             var monthlyRaport = (from x in LinqManager.usersDataContext.Loginfos
                                  where x.UserID.Equals(_selectedUser.UserID)
                                  orderby x.LoginDate
                                  select x)
                                  .Where(y => y.LoginDate.Value.Month.Equals(DateTime.Today.AddDays(-1).Month))
                                  .ToList();
-
 
             List < Loginfo > monthlyLoginRaport = new List<Loginfo>();
 
@@ -166,7 +173,8 @@ namespace LoginPanelApplication.Panels
             UserDataGrid.ItemsSource = monthlyLoginRaport;           
         }
 
-        private async void btnChangePassword_ClickAsync(object sender, RoutedEventArgs e)
+
+        private  void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             txtPassword.Text = Password.Generate();
             _selectedUser.ChangePassword = true;
@@ -177,8 +185,14 @@ namespace LoginPanelApplication.Panels
             }
             catch (Exception ex)
             {
-                await this.ShowMessageAsync("Error","Something went wrong, " + ex.Message);
+                ShowMessageBox("Error","Something went wrong, " + ex.Message);
             }
+        }
+
+
+        private async void ShowMessageBox(string title, string content)
+        {
+           await this.ShowMessageAsync(title, content);
         }
     }
 }

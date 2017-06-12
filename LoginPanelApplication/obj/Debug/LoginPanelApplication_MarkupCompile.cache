@@ -16,5 +16,5 @@ C:\Users\Daiusz\Desktop\Login App\TFSLoginApplication\LoginPanelApplication\App.
 17-1834583189
 MainWindow.xaml;Panels\Admin\AddUser.xaml;Panels\Admin\AdminPanel.xaml;Panels\Employee\ChangePassword.xaml;Panels\Employee\EmployeePanel.xaml;Panels\LoginPanel.xaml;Panels\PasswordRecoveryPanel.xaml;Panels\Admin\UserDetails.xaml;Panels\Admin\UserManager.xaml;
 
-True
+False
 

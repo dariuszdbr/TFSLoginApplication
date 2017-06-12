@@ -144,7 +144,7 @@
                 </DataGrid>
                 <Button Margin="20,0,20,10" x:Name="btnAddUser" Click="btnAddUser_Click">Add User</Button>
                 <Button Margin="20,0,20,10" x:Name="btnDetails" Click="btnDetails_Click">Check User Attendace</Button>
-                <Button Margin="20,0,20,10" x:Name="btnDeleteUser" Click="btnDeleteUser_ClickAsync">Delete Selected User</Button>
+                <Button Margin="20,0,20,10" x:Name="btnDeleteUser" Click="btnDeleteUser_Click">Delete Selected User</Button>
             </StackPanel>
             <Button VerticalAlignment="Bottom" DockPanel.Dock="Left" Margin="20,0,20,0" x:Name="btnBack" Click="btnBack_Click">Back to Admin panel</Button>
         </Grid>
